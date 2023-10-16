@@ -1,0 +1,54 @@
+
+h1 {
+    color: #333;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table, th, td {
+    border: 1px solid #ddd;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+}
+
+img {
+    max-width: 100px;
+    height: auto;
+}
+
+.add-item-link {
+    display: inline-block;
+    margin-top: 20px;
+    text-decoration: none;
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+/* CSS for the "Add Item" button */
+.button {
+    display: inline-block;
+    padding: 10px 20px; /* Adjust padding to control button size */
+    background-color: #007bff; /* Button background color */
+    color: #fff; /* Button text color */
+    border: none; /* Remove button border */
+    border-radius: 5px; /* Add rounded corners */
+    text-decoration: none; /* Remove underline */
+    font-weight: bold; /* Make the text bold */
+    cursor: pointer; /* Change cursor to a hand on hover */
+    transition: background-color 0.3s; /* Smooth background color transition on hover */
+
+    /* Style button on hover */
+    &:hover {
+        background-color: #0056b3; /* Darker background color on hover */
+    }
+}
+

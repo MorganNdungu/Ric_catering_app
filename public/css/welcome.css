@@ -1,0 +1,77 @@
+/* Add this CSS to your existing CSS file or create a new one */
+
+/* Style the welcome page container */
+.welcome-page {
+    position: relative;
+    padding: 0;
+}
+
+/* Style the background image */
+.welcome-background-image {
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+}
+
+/* Style the carousel container */
+#foodCarousel {
+    background-color: rgba(0, 0, 0, 0.5); /* Add a semi-transparent overlay to make text more readable */
+}
+
+/* Style the carousel indicators */
+.carousel-indicators {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+}
+
+/* Style the carousel items (each slide) */
+.carousel-item {
+    min-height: 500px;
+    text-align: center;
+    color: #fff;
+}
+
+/* Style the carousel captions */
+.carousel-caption {
+    background-color: rgba(0, 0, 0, 0.7); /* Add a semi-transparent overlay to make text more readable */
+    border-radius: 5px;
+    padding: 10px;
+}
+
+/* Style the introductory content */
+.welcome-content {
+    text-align: center;
+    padding: 50px 0;
+    color: #fff;
+}
+
+/* Style the "Order Now" button */
+.welcome-content .btn-primary {
+    background-color: #3498db;
+    border: none;
+}
+
+/* Style the information and contact details section */
+.welcome-info {
+    background-color: #fff;
+    padding: 50px 0;
+    text-align: center;
+}
+
+/* Style the headings in the information section */
+.welcome-info h3 {
+    color: #333;
+}
+
+/* Style the buttons in the information section */
+.welcome-info .btn-secondary {
+    background-color: #555;
+    color: #fff;
+    border: none;
+    margin-top: 15px;
+}
+
+/* Add more styling as needed */
