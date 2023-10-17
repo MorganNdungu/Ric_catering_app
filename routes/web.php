@@ -1,6 +1,10 @@
 <?php
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\ItemController; // Correct class name
 
 Auth::routes();
@@ -35,6 +39,9 @@ Route::put('/items/{item}', [ItemController::class, 'update']);
 // Delete - Delete an item
 Route::delete('/items/{item}', [ItemController::class, 'destroy'])->name('items.destroy');
 
+Route::post('/addToCart/{item}', [CartController::class, 'addToCart'])->name('addToCart');
+
+
 Route::get('/login', function () {
     return view('auth.login');
 })->name('login');
@@ -53,3 +60,37 @@ Route::get('/users/{user}/edit-role', [UserController::class, 'editRole'])->name
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::group(['middleware'=>'auth'], function(){
+    Route::view('/dashboard', 'dashboard');
+    // Route::view('/items', 'item');
+    Route::view('/users', 'user');
+    // Route::view('/services', 'service');
+
+
+});
+// Add items to the cart
+Route::post('/cart/add/{item}', [CartController::class, 'addItemToCart'])->name('cart.add');
+
+// View the cart
+Route::get('/cart', [CartController::class, 'viewCart'])->name('cart.view');
+
+// Update cart item quantity
+Route::put('/cart/update/{cartItem}', [CartController::class, 'updateCartItem'])->name('cart.update');
+
+// Remove items from the cart
+Route::delete('/cart/remove/{cartItem}', [CartController::class, 'removeCartItem'])->name('cart.remove');
+
+Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout');
+
+// Checkout and place an order
+Route::post('/checkout', [OrderController::class, 'placeOrder'])->name('order.place');
+
+Route::post('/place-order', 'CheckoutController@placeOrder')->name('order.place');
+
+Route::get('/checkout', [CheckoutController::class, 'showCheckoutForm'])->name('checkout');
+Route::post('/place-order', [CheckoutController::class, 'placeOrder'])->name('order.place');
+
+
+Route::post('/place-order', [OrderController::class, 'placeOrder'])->name('order.place');
+Route::get('/order-confirmation', [OrderController::class, 'confirmation'])->name('order.confirmation');

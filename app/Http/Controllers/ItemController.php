@@ -13,6 +13,7 @@ class ItemController extends Controller
     {
         $items = Item::all();
         return view('items.index', compact('items'));
+        
     }
 
     public function create()

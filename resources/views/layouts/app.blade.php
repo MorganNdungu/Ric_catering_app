@@ -10,8 +10,10 @@
     <nav class="main-navigation">
         <ul>
             <li><a href="/">Home</a></li>
+            @hasrole('Admin')
             <li><a href="/users">Users</a></li>
-            <li><a href="/items">Items</a></li>
+            @endhasrole
+            <li><a href="/items">Items</a></li>            
             <li><a href="/about">About</a></li>
             <li><a href="/contact">Contact</a></li>
             <li class="dropdown">
