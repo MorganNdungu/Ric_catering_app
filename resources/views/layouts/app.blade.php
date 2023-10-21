@@ -11,7 +11,7 @@
         <ul>
             <li><a href="/">Home</a></li>
             @hasrole('Admin')
-            <li><a href="/users">Users</a></li>
+            <li><a href="{{route('users.index')}}">Users</a></li>
             @endhasrole
             <li><a href="/items">Items</a></li>            
             <li><a href="/about">About</a></li>

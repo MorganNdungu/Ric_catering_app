@@ -53,9 +53,9 @@ Route::get('/register', function () {
 
 Route::post('/logout', [Auth\LoginController::class, 'logout'])->name('logout');
 
-Route::get('/users', [UserController::class, 'index'])->name('users.index');
+// Route::get('/users', [UserController::class, 'index'])->name('users.index');
+// Route::get('/users/{users}/edit-role', [UserController::class, 'editRole'])->name('users.edit-role');
 
-Route::get('/users/{user}/edit-role', [UserController::class, 'editRole'])->name('users.edit-role');
 
 Auth::routes();
 
@@ -64,8 +64,14 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::group(['middleware'=>'auth'], function(){
     Route::view('/dashboard', 'dashboard');
     // Route::view('/items', 'item');
-    Route::view('/users', 'user');
+    // Route::view('/users', 'user');
     // Route::view('/services', 'service');
+    Route::resource('users',UserController::class);
+    Route::get('/users/{user}/edit-role', [UserController::class, 'editRole'])->name('users.edit-role');
+    Route::put('/users/{user}/update-role', [UserController::class, 'updateRole'])->name('users.update-role');
+
+
+
 
 
 });
@@ -84,7 +90,7 @@ Route::delete('/cart/remove/{cartItem}', [CartController::class, 'removeCartItem
 Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout');
 
 // Checkout and place an order
-Route::post('/checkout', [OrderController::class, 'placeOrder'])->name('order.place');
+// Route::post('/checkout', [OrderController::class, 'placeOrder'])->name('order.place');
 
 Route::post('/place-order', 'CheckoutController@placeOrder')->name('order.place');
 

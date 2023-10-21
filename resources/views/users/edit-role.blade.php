@@ -5,7 +5,7 @@
 @section('content')
 <div class="container">
     <h1>Edit User Role</h1>
-    <form method="POST" action="{{ route('users.update-role', $user->id) }}">
+    <form method="POST" action="{{ route('users.update-role', $user->id)  }} ">
         @csrf
         @method('PUT')
 

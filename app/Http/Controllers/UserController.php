@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controller;
 use App\Http\Controllers\UserController;
 
 class UserController extends Controller
