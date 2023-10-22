@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Item;
 use Illuminate\Http\Request;
-use App\Http\Requests\UpdateItemRequest;
+// use App\Http\Requests\UpdateItemRequest;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\UpdateItemRequest;
 
 class ItemController extends Controller
 {
@@ -54,6 +55,7 @@ class ItemController extends Controller
 
     public function update(UpdateItemRequest $request, Item $item)
     {
+        
         $item->update($request->validated());
 
         return redirect('/items')->with('status', 'Item updated successfully');

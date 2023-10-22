@@ -9,8 +9,8 @@
 @section('content')
 <link href="{{ asset('css/edit_item.css') }}" rel="stylesheet">
 
-    <form action="/items/{{ $item->id }}" method="POST" enctype="multipart/form-data">
-        @csrf
+<form action="{{ route('items.update', $item->id) }}" method="POST">
+    @csrf
         @method('PUT')
         <div class="form-group">
             <label for="title">Title</label>

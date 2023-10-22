@@ -2,6 +2,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\CakesController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\ProductsController;
@@ -34,7 +35,7 @@ Route::post('/items', [ItemController::class, 'store']);
 
 // Update - Show the form for editing an existing item
 Route::get('/items/{item}/edit', [ItemController::class, 'edit'])->name('items.edit');
-Route::put('/items/{item}', [ItemController::class, 'update']);
+Route::put('/items/{item}', [ItemController::class, 'update'])->name('items.update');
 
 // Delete - Delete an item
 Route::delete('/items/{item}', [ItemController::class, 'destroy'])->name('items.destroy');
@@ -100,3 +101,9 @@ Route::post('/place-order', [CheckoutController::class, 'placeOrder'])->name('or
 
 Route::post('/place-order', [OrderController::class, 'placeOrder'])->name('order.place');
 Route::get('/order-confirmation', [OrderController::class, 'confirmation'])->name('order.confirmation');
+
+
+Route::get('/cakes', [CakesController::class, 'index'])->name('cakes.index');
+Route::post('cakes', [CakesController::class, 'store'])->name('cakes.store');
+Route::get('/cakes/create', [CakesController::class, 'create'])->name('cakes.create');
+Route::get('/cakes/{cakeId}/order', [CakesController::class, 'order'])->name('cakes.order');

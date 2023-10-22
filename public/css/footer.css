@@ -1,59 +1,55 @@
-/* Add this CSS code to your styles.css or your HTML head */
-
 /* Footer Styles */
 .site-footer {
-    background-color: #333; /* Background color */
-    color: #fff; /* Text color */
+    background-color: #333;
     padding: 40px 0;
+    color: #fff;
 }
 
 .site-footer h4 {
-    font-size: 20px;
-    margin-bottom: 20px;
+    font-size: 18px;
+    margin: 0;
 }
 
 .site-footer p {
-    font-size: 16px;
-    margin-bottom: 20px;
+    font-size: 14px;
+    margin: 15px 0;
 }
 
+.site-footer .row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.site-footer .col-md-4 {
+    width: 33.33%;
+    padding: 0 15px;
+}
+
+/* Social Icons */
 .social-icons {
     list-style: none;
     padding: 0;
-    display: flex;
 }
 
 .social-icons li {
-    margin-right: 20px;
+    display: inline-block;
+    margin-right: 10px;
     font-size: 24px;
 }
 
 .social-icons a {
-    color: #fff; /* Icon color */
+    color: #fff;
     text-decoration: none;
+    transition: color 0.3s;
 }
 
-/* Copyright Style */
+.social-icons a:hover {
+    color: #f2a654; /* Change to your preferred hover color */
+}
+
+/* Copyright */
 .copyright {
-    font-size: 14px;
+    font-size: 12px;
     margin-top: 20px;
-}
-
-/* Responsive Styles */
-@media (max-width: 768px) {
-    .site-footer {
-        text-align: center;
-    }
-
-    .site-footer .container {
-        padding: 0;
-    }
-
-    .social-icons {
-        justify-content: center;
-    }
-
-    .social-icons li {
-        margin-right: 15px;
-    }
 }

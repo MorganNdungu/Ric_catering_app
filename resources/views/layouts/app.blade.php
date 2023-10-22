@@ -22,7 +22,7 @@
                     <a href="#">Catering Services</a>
                     <a href="#">Birthday Package</a>
                     <a href="#">Wedding Package</a>
-                    <a href="#">Cakes</a>
+                    <a href="{{ route('cakes.index') }}">Cakes</a>
                     <a href="#">Snacks</a>
                     <a href="#">Traditional Meals</a>
                 </div>
@@ -85,7 +85,6 @@
 
     </head>
     <body>
-        <!-- Your website content -->
     
         <!-- Footer -->
         <footer class="site-footer">
@@ -101,12 +100,15 @@
                             <li><a href="#"><i class="fab fa-instagram"></i></a></li>
                             <li><a href="#"><i class="fab fa-facebook"></i></a></li>
                             <li><a href="#"><i class="fab fa-whatsapp"></i></a></li>
-                            <li><a href="#"><i class="fab fa-tiktok"></i></a></li>
+                            <li>
+                                <a href="fb://page/{https://www.facebook.com/morgan.ndungu.52}">
+                                    <img src="facebook-icon.png" alt="Facebook">
+                            </li>
                         </ul>
                     </div>
                     <div class="col-md-4">
                         <h4>Contact Us</h4>
-                        <p>Phone: +123-456-789</p>
+                        <p>Phone: 07XX XXX XXX</p>
                         <p>Email: ric@gmail.com</p>
                     </div>
                 </div>

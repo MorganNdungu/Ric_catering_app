@@ -39,8 +39,8 @@
                     </td>
                     @hasrole('Admin')
                     <td>
-                            
                         <a href="{{ route('items.edit', $item->id) }}" class="button">Edit</a>
+
                         <form action="{{ route('items.destroy', $item->id) }}" method="POST" style="display: inline;">
                             @csrf
                             @method('DELETE')
