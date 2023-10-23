@@ -1,0 +1,75 @@
+/* cake-delete.css */
+
+/* Style the container for the confirmation view */
+.container {
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #e2e2e2;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Style the confirmation message */
+.alert-danger {
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+    color: #721c24;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+/* Style the cake details */
+.cake-details {
+    margin: 20px 0;
+}
+
+/* Style the cake name */
+.cake-details h2 {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* Style the cake description */
+.cake-details p {
+    font-size: 16px;
+    color: #555;
+    margin: 10px 0;
+}
+
+/* Style the cake price */
+.cake-details p:last-child {
+    font-size: 18px;
+    font-weight: bold;
+    color: #ff5733;
+}
+
+/* Style the action buttons */
+button.btn-danger {
+    background-color: #dc3545;
+    border: none;
+    color: #fff;
+    border-radius: 5px;
+    padding: 8px 16px;
+    cursor: pointer;
+}
+
+button.btn-danger:hover {
+    background-color: #c82333;
+}
+
+a.btn-secondary {
+    background-color: #6c757d;
+    border: none;
+    color: #fff;
+    border-radius: 5px;
+    padding: 8px 16px;
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+}
+
+a.btn-secondary:hover {
+    background-color: #545b62;
+}

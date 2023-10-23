@@ -20,7 +20,7 @@
             </div>
 
             <div class="form-group">
-                <label for="price">Price (USD)</label>
+                <label for="price">Price (KSH)</label>
                 <input type="number" name="price" id="price" class="form-control" step="0.01" required>
             </div>
 

@@ -5,17 +5,17 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    gap: 20px;
+    gap: 10px;
 }
 
 /* Style each cake card */
 .cake-card {
-    width: 13%; /* Adjust the width as needed */
-    margin-bottom: 20px;
+    width: 15%; /* Adjust the width as needed */
+    margin-bottom: 13px;
     padding: 15px;
-    border: 1px solid #e2e2e2;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border: 0px solid #e2e2e2;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(65, 3, 3, 0.92);
     transition: transform 0.3s;
 }
 
@@ -48,7 +48,7 @@
 .cake-price {
     font-size: 18px;
     font-weight: bold;
-    color: #ff5733;
+    color: #851f0d;
 }
 
 /* Style the "Order Now" button */
@@ -58,6 +58,7 @@
     color: #fff;
     padding: 8px 16px;
     border: none;
+    border-bottom: 5px;
     border-radius: 5px;
     cursor: pointer;
     text-decoration: none;
@@ -73,7 +74,8 @@
     background-color: #007bff;
     color: #fff;
     padding: 8px 16px;
-    border: none;
+    /* border: none; */
+    border-bottom: 5px;
     border-radius: 5px;
     cursor: pointer;
     text-decoration: none;
@@ -82,4 +84,21 @@
 }
 .btn:hover{
     background-color: green;
+}
+.button{
+    width: 30px;
+    display: inline-block;
+    background-color: #007bff;
+    color: #fff;
+    padding: 8px 16px;
+    /* border: none; */
+    border-bottom: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+    transition: background-color 0.3s; 
+}
+.button:hover{
+    background-color:aqua;
 }

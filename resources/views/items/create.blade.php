@@ -20,7 +20,7 @@
             <textarea name="description" id="description" required></textarea>
         </div>
         <div class="form-group">
-            <label for="price">Price:</label>
+            <label for="price">Price (KSH):</label>
             <input type="number" name="price" id="price" required>
         </div>
         <div class="form-group">

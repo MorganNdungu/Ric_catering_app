@@ -102,8 +102,11 @@ Route::post('/place-order', [CheckoutController::class, 'placeOrder'])->name('or
 Route::post('/place-order', [OrderController::class, 'placeOrder'])->name('order.place');
 Route::get('/order-confirmation', [OrderController::class, 'confirmation'])->name('order.confirmation');
 
-
+Route::resource('cakes', CakesController::class);
 Route::get('/cakes', [CakesController::class, 'index'])->name('cakes.index');
 Route::post('cakes', [CakesController::class, 'store'])->name('cakes.store');
 Route::get('/cakes/create', [CakesController::class, 'create'])->name('cakes.create');
 Route::get('/cakes/{cakeId}/order', [CakesController::class, 'order'])->name('cakes.order');
+Route::put('/cakes/{cake}', [CakesController::class, 'update'])->name('cakes.update');
+Route::get('/cakes/{cake}/confirm-delete', [CakesController::class, 'confirmDelete'])->name('cakes.confirm-delete');
+Route::delete('/cakes/{cake}', [CakesController::class, 'destroy'])->name('cakes.destroy');
