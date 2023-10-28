@@ -70,6 +70,7 @@ Route::group(['middleware'=>'auth'], function(){
     Route::resource('users',UserController::class);
     Route::get('/users/{user}/edit-role', [UserController::class, 'editRole'])->name('users.edit-role');
     Route::put('/users/{user}/update-role', [UserController::class, 'updateRole'])->name('users.update-role');
+    Route::get('/cart', [CartController::class, 'viewcart'])->name('cart.view');
 
 
 

@@ -8,58 +8,49 @@
 
 @section('content')
 <link rel="stylesheet" href="{{ asset('css/items.css') }}">
-    <h1>Items</h1>
-    <table>
-        <thead>
-            <tr>
-                <th>Title</th>
-                <th>Description</th>
-                <th>Price</th>
-                <th>Image</th>
-                <th></th>                
+<div class="row">
+    @foreach ($items as $item)
+        <div class="col-md-3 mb-3">
+            <div class="card">
+                @if ($item->image)
+                    <img src="{{ asset('images/' . $item->image) }}" alt="Item Image" class="card-img-top">
+                @endif
+                <div class="card-body">
+                    <h5 class="card-title">{{ $item->title }}</h5>
+                    <p class="card-text">{{ $item->description }}</p>
+                    <p class="card-text">Price: KSH{{ $item->price }}</p>
+                </div>
+                <div class="card-footer">
+                    <form action="{{ route('cart.add', $item->id) }}" method="POST">
+                        @csrf
+                        <div class="input-group">
+                            <input type="number" name="quantity" value="1" min="1" class="form-control">
+                            <div class="input-group-append">
+                                <button type="submit" class="btn btn-success"><i class="bi bi-cart-check-fill"></i></button>
+                            </div>
+                        </div>
+                    </form>
 
-                @hasrole('Admin')
-                <th>Action</th>
-                @endhasrole
-            </tr>
-        </thead>
-        <tbody>
-            @foreach ($items as $item)
-                <tr>
-                    <td>{{ $item->title }}</td>
-                    <td>{{ $item->description }}</td>
-                    <td>KSH{{ $item->price }}</td>
-                    <td>
-                        @if ($item->image)
-                            <img src="{{ asset('images/' . $item->image) }}" alt="Item Image" width="200">
-                        @else
-                            No Image
-                        @endif
-                        
-                    </td>
                     @hasrole('Admin')
-                    <td>
-                        <a href="{{ route('items.edit', $item->id) }}" class="button">Edit</a>
-
+                    <div class="mt-3">
+                        <a href="{{ route('items.edit', $item->id) }}" class="btn btn-outline-success"><i class="bi bi-pencil-square"></i> </a>
                         <form action="{{ route('items.destroy', $item->id) }}" method="POST" style="display: inline;">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="button" onclick="return confirm('Are you sure you want to delete this item?')">Delete</button>
+                            <button type="submit" class="btn btn-outline-danger" onclick="return confirm('Are you sure you want to delete this item?')"><i class="bi bi-trash3"></i> </button>
                         </form>
-                        @endhasrole
-                        <td>
-                            <form action="{{ route('cart.add', $item->id) }}" method="POST">
-                                @csrf
-                                <input type="number" name="quantity" value="1" min="1">
-                                <button type="submit" class="button">Add to Cart</button>
-                            </form>
-                        </td>
-                    </td>
-                </tr>
-            @endforeach
-        </tbody>
-    </table>
-    @hasrole('Admin')
-    <a href="/items/create" class="button">Add Item</a>
-    @endhasrole
-    @endsection
+                    </div>
+                    @endhasrole
+                </div>
+            </div>
+        </div>
+    @endforeach
+</div>
+
+@hasrole('Admin')
+<div>
+    <a href="/items/create" class="btn btn-primary"><i class="bi bi-plus"></i> Add Item</a>
+</div>
+@endhasrole
+
+@endsection

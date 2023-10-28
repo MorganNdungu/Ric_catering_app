@@ -1,47 +1,42 @@
-/* Center the login form */
+/* Style for the login form container */
 .container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+    margin-top: 20px;
+    padding-bottom: 5%;
 }
 
+/* Style for the card (login form) */
 .card {
-    width: 100%;
-    max-width: 400px; /* Adjust the max-width as needed */
-    padding: 20px;
-    margin: 0 auto;
     border: 1px solid #ccc;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
 }
 
+/* Style for the card header */
 .card-header {
-    font-size: 24px;
-    text-align: center;
-    padding: 15px 0;
     background-color: #007bff;
     color: #fff;
+    text-align: center;
+    font-weight: bold;
+    border-radius: 10px 10px 0 0;
 }
 
-/* Style the input fields */
-.form-control {
-    margin-bottom: 10px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+/* Style for form labels */
+.form-label {
+    font-weight: bold;
 }
 
-/* Style the login button */
+/* Style for the "Remember Me" checkbox */
+.form-check-input {
+    margin-left: 0;
+}
+
+/* Style for the login button */
 .btn-primary {
     background-color: #007bff;
     border: none;
-    border-radius: 5px;
-    padding: 10px 20px;
-    color: #fff;
-    cursor: pointer;
 }
 
+/* Hover effect for the login button */
 .btn-primary:hover {
     background-color: #0056b3;
+    border: none;
 }

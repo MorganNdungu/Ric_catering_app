@@ -32,14 +32,15 @@ class CartController extends Controller {
             if ($cart) {
                 $cartItems = $cart->cartItems;
                 $total = $cartItems->sum(function ($cartItem) {
-                    return $cartItem->item->price * $cartItem->quantity;
+                return $cartItem->item->price * $cartItem->quantity;
                 });
+                $cartItemCount = $cart->cartItems->count();
             } else {
                 $cartItems = collect(); // Create an empty collection if the cart is not found.
                 $total = 0; // Total is zero when the cart is empty.
             }
     
-            return view('cart', compact('cartItems', 'total'));
+            return view('cart', compact('cartItems', 'total', 'cartItemCount'));
         } else {
             // Handle the case where the user is not authenticated, e.g., show a login form or redirect to the login page.
             return redirect()->route('login')->with('status', 'Please log in to add items to your cart.');
@@ -49,16 +50,27 @@ class CartController extends Controller {
        
 
     public function viewCart()
-{
-    $user = Auth::user();
-    $cart = Cart::firstOrCreate(['user_id' => $user->id]);
-    $cartItems = $cart->cartItems;
-    $total = $cartItems->sum(function ($cartItem) {
-        return $cartItem->item->price * $cartItem->quantity;
-    });
+    {
+        if (Auth::check()) {
+            $user = Auth::user();
+            $cart = Cart::firstOrCreate(['user_id' => $user->id]);
+            $cartItemCount = $cart->cartItems->count(); // Count the items in the cart
+            $cartItems = $cart->cartItems;
+            $total = $cartItems->sum(function ($cartItem) {
+                return $cartItem->item->price * $cartItem->quantity;
+            });
+        } else {
+            // Handle the case where the user is not authenticated
+            $cartItemCount = 0; // Set it to zero when the user is not authenticated
+            $cartItems = collect(); // Create an empty collection if the cart is not found.
+            $total = 0; // Total is zero when the cart is empty.
+        }
+    
+        return view('cart', compact('cartItems', 'total', 'cartItemCount'));
+    }
+    
 
-    return view('cart', compact('cartItems', 'total'));
-}
+    
 
     public function updateCartItem(CartItem $cartItem)
     {
@@ -71,7 +83,13 @@ class CartController extends Controller {
     public function removeCartItem(CartItem $cartItem)
     {
         $cartItem->delete();
-
+        
+        // Update the cart item count after removing an item
+        $user = Auth::user();
+        $cart = Cart::firstOrCreate(['user_id' => $user->id]);
+        $cartItemCount = $cart->cartItems->count();
+        
         return redirect()->route('cart.view')->with('status', 'Item removed from cart.');
     }
+    
 }

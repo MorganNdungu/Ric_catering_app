@@ -64,7 +64,7 @@ class CakesController extends Controller
     }
 
     public function confirmDelete($id)
-{
+    {
     $cake = Cake::find($id);
 
     if (!$cake) {
@@ -72,7 +72,7 @@ class CakesController extends Controller
     }
 
     return view('cakes.confirm-delete', compact('cake'));
-}
+    }
 
 
     public function destroy($id)

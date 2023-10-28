@@ -1,47 +1,55 @@
-/* Center the registration form */
-.container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+/* Style for the card (login form) */
+.container{
+    padding-bottom: 1%;
 }
-
 .card {
-    width: 100%;
-    max-width: 400px; /* Adjust the max-width as needed */
-    padding: 20px;
-    margin: 0 auto;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    border: 2px solid #007bff; /* Border around the card */
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Drop shadow */
+    padding-bottom: 2%;
 }
 
+/* Style for the card header */
 .card-header {
-    font-size: 24px;
-    text-align: center;
-    padding: 15px 0;
     background-color: #007bff;
     color: #fff;
+    text-align: center;
+    font-weight: bold;
+    border-radius: 10px 10px 0 0;
+    padding: 15px; /* Add some padding for space */
 }
 
-/* Style the input fields */
-.form-control {
-    margin-bottom: 10px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+/* Style for form labels */
+.form-label {
+    font-weight: bold;
 }
 
-/* Style the registration button */
+/* Style for the "Remember Me" checkbox */
+.form-check-input {
+    margin-left: 0;
+}
+
+/* Style for the login button */
 .btn-primary {
     background-color: #007bff;
     border: none;
-    border-radius: 5px;
-    padding: 10px 20px;
-    color: #fff;
-    cursor: pointer;
 }
 
+/* Hover effect for the login button */
 .btn-primary:hover {
     background-color: #0056b3;
+    border: none;
+}
+
+/* Additional styling for input fields */
+.form-control {
+    border: 1px solid #ccc; /* Add a border to input fields */
+    border-radius: 5px; /* Rounded corners */
+    margin-bottom: 10px; /* Space between fields */
+    padding: 10px; /* Padding inside input fields */
+}
+
+/* Style for error messages */
+.invalid-feedback {
+    color: #ff0000; /* Red color for error messages */
 }
