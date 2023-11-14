@@ -1,11 +1,14 @@
 <?php
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CakesController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\SnackController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\ProductsController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ItemController; // Correct class name
 
 Auth::routes();
@@ -60,7 +63,8 @@ Route::post('/logout', [Auth\LoginController::class, 'logout'])->name('logout');
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/Dashboard', [DashboardController::class, 'Dashboard'])->name('Dashboard');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 Route::group(['middleware'=>'auth'], function(){
     Route::view('/dashboard', 'dashboard');
@@ -115,3 +119,14 @@ Route::get('/cakes/{cakeId}/order', [CakesController::class, 'order'])->name('ca
 Route::put('/cakes/{cake}', [CakesController::class, 'update'])->name('cakes.update');
 Route::get('/cakes/{cake}/confirm-delete', [CakesController::class, 'confirmDelete'])->name('cakes.confirm-delete');
 Route::delete('/cakes/{cake}', [CakesController::class, 'destroy'])->name('cakes.destroy');
+
+
+Route::get('/snacks', [SnackController::class, 'index'])->name('snacks.index');
+Route::get('/snacks/create', [SnackController::class, 'create'])->name('snacks.create');
+Route::post('/snacks', [SnackController::class, 'store'])->name('snacks.store');
+Route::get('/snacks/{snack}', [SnackController::class, 'show'])->name('snacks.show');
+Route::get('/snacks/{snack}/edit', [SnackController::class, 'edit'])->name('snacks.edit');
+Route::put('/snacks/{snack}', [SnackController::class, 'update'])->name('snacks.update');
+Route::delete('/snacks/{snack}/soft-delete', [SnackController::class, 'softDelete'])->name('snacks.soft-delete');
+Route::delete('/snacks/{snack}', [SnackController::class, 'destroy'])->name('snacks.destroy');
+Route::get('/snacks/{snack}/order', [SnackController::class, 'order'])->name('snacks.order');

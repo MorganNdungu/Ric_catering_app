@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cake;
 use Illuminate\Http\Request;
+use App\Http\Controllers\HomeController;
+
 
 class HomeController extends Controller
 {
@@ -23,6 +26,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        return redirect()->route('Dashboard');
     }
 }

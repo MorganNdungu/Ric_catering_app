@@ -26,7 +26,7 @@
                     <a href="#">Birthday Package</a>
                     <a href="#">Wedding Package</a>
                     <a href="{{ route('cakes.index') }}">Cakes</a>
-                    <a href="#">Snacks</a>
+                    <a href="{{ route('snacks.index') }}">Snacks</a>
                     <a href="#">Traditional Meals</a>
                 </div>
             </li>
