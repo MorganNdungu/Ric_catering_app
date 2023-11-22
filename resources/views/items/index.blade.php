@@ -1,15 +1,20 @@
 @extends('layouts.app')
 
-@section('RicApp', 'Items Listing')
+@section('title', 'Items Listing')
 
-@section('RicHarrry-Catering-Sevices')
+@section('page-title')
     Items
 @endsection
 
 @section('content')
-<link rel="stylesheet" href="{{ asset('css/items.css') }}">
-<div class="row">
-    @foreach ($items as $item)
+    <link rel="stylesheet" href="{{ asset('css/items.css') }}">
+    @hasrole('Admin')
+        <div>
+            <a href="{{ route('items.create') }}" class="btn btn-primary"><i class="bi bi-plus"></i></a>
+        </div>
+    @endhasrole
+    <div class="row">
+        @foreach ($items as $item)
         <div class="col-md-3 mb-3">
             <div class="card">
                 @if ($item->image)
@@ -47,10 +52,6 @@
     @endforeach
 </div>
 
-@hasrole('Admin')
-<div>
-    <a href="/items/create" class="btn btn-primary"><i class="bi bi-plus"></i> Add Item</a>
-</div>
-@endhasrole
+
 
 @endsection

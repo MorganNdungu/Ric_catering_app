@@ -9,7 +9,7 @@
 @section('content')
     <link rel="stylesheet" href="{{ asset('css/create.css') }}"> <!-- Link to your custom CSS file -->
 
-    <form method="POST" action="/items" enctype="multipart/form-data">
+    <form method="POST" action="{{ route('items.store') }}" enctype="multipart/form-data">
         @csrf
         <div class="form-group">
             <label for="title">Title:</label>
@@ -31,5 +31,5 @@
             <button type="submit" class="button">Create Item</button>
         </div>
     </form>
-    <a href="/" class="button">Back to Items</a>
+    <a href="{{ route('items.index') }}" class="button">Back to Items</a>
 @endsection

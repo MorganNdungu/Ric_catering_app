@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Item;
 use Illuminate\Http\Request;
-// use App\Http\Requests\UpdateItemRequest;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
+use App\Http\Controllers\ItemController;
 use App\Http\Requests\UpdateItemRequest;
 
 class ItemController extends Controller
@@ -21,6 +22,7 @@ class ItemController extends Controller
     {
         return view('items.create');
     }
+
 
     public function store(Request $request)
     {
@@ -45,7 +47,7 @@ class ItemController extends Controller
 
         $item->save();
 
-        return redirect('/items');
+        return redirect()->route('items.index')->with('status', 'Item created successfully');
     }
 
     public function edit(Item $item)
@@ -58,7 +60,7 @@ class ItemController extends Controller
         
         $item->update($request->validated());
 
-        return redirect('/items')->with('status', 'Item updated successfully');
+        return redirect()->route('items.index')->with('status', 'Item updated successfully');
     }
 
     public function softDelete($id)

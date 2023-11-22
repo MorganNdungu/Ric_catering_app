@@ -9,7 +9,7 @@
 
     
 
-    <div class="icons-details" style="position: relative; z-index: 1; color: #fff; text-align: center; padding: 20px; overflow: hidden;">
+    <div class="icons-details" >
         <div class="row">
             <div class="col-md-3">
                 <div class="icon-box">

@@ -10,6 +10,9 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <style>
+        body{
+            background-image:image(C:\XAMPP\htdocs\RicApp-app\public\images\Paneer Tikka Recipe.jpeg)
+        }
         .navbar-toggler-icon {
             background-color: red; /* Customize the hamburger icon color */
         }
@@ -20,12 +23,16 @@
             justify-content: space-between;
             align-items: center;
             padding: 10px;
-            color: #fff; /* Set the color to white for better visibility */
+            color: red;
+            background-color: rgb(87, 32, 32); /* Set the color to white for better visibility */
         }
 
         .navbar-nav {
             width: 100%;
             text-align: center;
+            color: aliceblue
+            background-color: rgb(36, 36, 102);
+
         }
 
         .navbar-toggler {
@@ -33,7 +40,7 @@
         }
 
         .navbar-collapse {
-            border-top: 1px solid #ddd;
+            border-top: 1px solid #190202;
             padding: 10px;
             text-align: left;
             position: relative; /* Required for positioning the image */
@@ -58,7 +65,7 @@
         }
 
         .cart-username a {
-            color: #fff; /* Set the color to white for better visibility */
+            color: blue; 
         }
     </style>
 </head>
@@ -117,9 +124,9 @@
                 <li class="nav-item"><a class="nav-link" href="/contact">Contact</a></li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Services
-                    </a>
+    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Services
+</a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="#">Catering Services</a>
                         <a class="dropdown-item" href="{{ route('birthday_packages.index') }}">Birthday Packages</a>

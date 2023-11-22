@@ -3,6 +3,7 @@ use App\Models\Item;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ItemController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CakesController;
 use App\Http\Controllers\MpesaController;
@@ -12,16 +13,13 @@ use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\BirthdayPackageController;
-use App\Http\Controllers\ItemController; 
 
 Auth::routes();
 
 Route::get('/', function () {
-    $featuredItems = Item::take(3)->get();
 
-    return view('welcome', compact('featuredItems'));
-})->name('welcome');
-
+    return view('welcome',);
+});
 Route::get('/about', function () {
     return view('about');
 });
@@ -34,19 +32,13 @@ Route::get('/services', function () {
     return view('services');
 });
 
-// Read - Display the list of items
-Route::get('/items', [ItemController::class, 'index']);
+
+Route::get('/items', [ItemController::class, 'index'])->name('items.index');
+Route::get('/items/create', [ItemController::class, 'create'])->name('items.create');
+Route::post('/items', [ItemController::class, 'store'])->name('items.store');
 Route::get('/items/{item}', [ItemController::class, 'show'])->name('items.show');
-
-// Create - Show the form for creating a new item
-Route::get('/items/create', [ItemController::class, 'create']);
-Route::post('/items', [ItemController::class, 'store']);
-
-// Update - Show the form for editing an existing item
 Route::get('/items/{item}/edit', [ItemController::class, 'edit'])->name('items.edit');
 Route::put('/items/{item}', [ItemController::class, 'update'])->name('items.update');
-
-// Delete - Delete an item
 Route::delete('/items/{item}', [ItemController::class, 'destroy'])->name('items.destroy');
 
 Route::post('/addToCart/{item}', [CartController::class, 'addToCart'])->name('addToCart');
