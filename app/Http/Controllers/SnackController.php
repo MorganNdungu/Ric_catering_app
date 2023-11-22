@@ -34,8 +34,20 @@ class SnackController extends Controller
 
     public function index()
     {
-        $snacks = Snack::withTrashed()->get(); // Include soft deleted records
+    $snacks = Snack::all(); 
+
     return view('snacks.index', compact('snacks'));
+    }
+
+    public function edit($id)
+    {
+        $snack = Snack::find($id);
+
+        if (!$snack) {
+            return redirect()->route('snacks.index')->with('error', 'Snack not found.');
+        }
+
+        return view('snacks.edit', compact('snack'));
     }
 
     public function create()
@@ -55,7 +67,7 @@ class SnackController extends Controller
 
         $snack->delete();
 
-        return redirect()->route('snacks.index')->with('success', 'Snack soft deleted successfully.');
+        return redirect()->route('snacks.index')->with('success', ' deleted successfully.');
     }
 
 

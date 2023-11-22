@@ -4,13 +4,14 @@ namespace App\Models;
 
 use App\Models\Cake;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Cake extends Model
 {
-    use HasFactory;
+    use HasFactory, SoftDeletes;
     protected $table = 'cakes'; 
 
     protected $fillable = [
-        'name', 'description', 'price', 'image_path'];
+        'name', 'description', 'price', 'image_path', 'deleted_at'];
 }

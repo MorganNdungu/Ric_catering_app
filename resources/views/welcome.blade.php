@@ -1,35 +1,50 @@
 @extends('layouts.app')
 
-@section('title', 'Welcome to FoodieLand')
+@section('title', 'Welcome to RicHarry Catering Services')
 
 @section('content')
-<link rel="stylesheet" href="{{ asset('css/welcome.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/welcome.css') }}">
 
-<div id="foodCarousel" class="carousel slide" data-ride="carousel">
-    <div class="carousel-inner">
-        <div class="carousel-item active">
-            <img src="{{ asset('images/Chicken and Cauliflower Rice.jpeg') }}" class="image" alt="image1">
-            <div class="carousel-caption d-none d-md-block">
-                <h5>Finger Licking</h5>
-                <p>All available at RicHarry Catering Services</p>
+    <body style="background-image: url('{{ asset('images/Paneer Tikka Recipe.jpeg') }}'); background-size: cover; background-position: center; background-repeat: no-repeat; background-attachment: fixed; ">
+
+    
+
+    <div class="icons-details" style="position: relative; z-index: 1; color: #fff; text-align: center; padding: 20px; overflow: hidden;">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="icon-box">
+                    <i class="bi bi-geo-alt"></i>
+                    <h4>Location</h4>
+                    <p>123 Main Street, City</p>
+                </div>
             </div>
-        </div>
-        <div class="carousel-item">
-            <img src="{{ asset('images/Paneer Tikka recipe.jpeg') }}" class="image" alt="image2">
-            <div class="carousel-caption d-none d-md-block">
-                <h5>Yuuuummy</h5>
-                <p>All available at RicHarry Catering Services</p>
+            <div class="col-md-3">
+                <div class="icon-box">
+                    <i class="bi bi-list"></i>
+                    <h4>Menu</h4>
+                    <p>Explore our diverse menu</p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="icon-box">
+                    <i class="bi bi-credit-card"></i>
+                    <h4>Payment</h4>
+                    <p>Secure and convenient options</p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="icon-box">
+                    <i class="bi bi-info-circle"></i>
+                    <h4>Details</h4>
+                    <p>Learn more about us</p>
+                </div>
             </div>
         </div>
     </div>
-    
-    <a class="carousel-control-prev" href="#foodCarousel" role="button" data-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-    </a>
-    <a class="carousel-control-next" href="#foodCarousel" role="button" data-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-    </a>
-</div>
+
+    <!-- Add other sections and content as needed -->
+
+    <script>
+        // Add any JavaScript specific to this page
+    </script>
 @endsection

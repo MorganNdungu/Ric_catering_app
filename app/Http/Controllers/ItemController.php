@@ -61,9 +61,23 @@ class ItemController extends Controller
         return redirect('/items')->with('status', 'Item updated successfully');
     }
 
-    public function destroy(Item $item)
+    public function softDelete($id)
     {
+         $item = Item::find($id);
+
+         if (!$item) {
+            return redirect()->route('items.index')->with('error', 'Item not found.');
+        }
+
+        Storage::delete($item->image_path);
+
         $item->delete();
-        return redirect('/items')->with('status', 'Item deleted successfully');
+
+        return redirect()->route('items.index')->with('success', 'Item soft deleted successfully.');
     }
+    public function show(Item $item)
+    {
+    return view('items.show', compact('item'));
+    }
+
 }

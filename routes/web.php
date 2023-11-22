@@ -1,21 +1,26 @@
 <?php
+use App\Models\Item;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CakesController;
+use App\Http\Controllers\MpesaController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\SnackController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\ItemController; // Correct class name
+use App\Http\Controllers\BirthdayPackageController;
+use App\Http\Controllers\ItemController; 
 
 Auth::routes();
 
 Route::get('/', function () {
-    return view('welcome');
-});
+    $featuredItems = Item::take(3)->get();
+
+    return view('welcome', compact('featuredItems'));
+})->name('welcome');
 
 Route::get('/about', function () {
     return view('about');
@@ -31,6 +36,7 @@ Route::get('/services', function () {
 
 // Read - Display the list of items
 Route::get('/items', [ItemController::class, 'index']);
+Route::get('/items/{item}', [ItemController::class, 'show'])->name('items.show');
 
 // Create - Show the form for creating a new item
 Route::get('/items/create', [ItemController::class, 'create']);
@@ -106,6 +112,7 @@ Route::post('/place-order', 'CheckoutController@placeOrder')->name('order.place'
 
 Route::get('/checkout', [CheckoutController::class, 'showCheckoutForm'])->name('checkout');
 Route::post('/place-order', [CheckoutController::class, 'placeOrder'])->name('order.place');
+Route::post('/mpesa/confirm', [CheckoutController::class, 'confirmMpesaPIN'])->name('mpesa.confirm');
 
 
 Route::post('/place-order', [OrderController::class, 'placeOrder'])->name('order.place');
@@ -130,3 +137,18 @@ Route::put('/snacks/{snack}', [SnackController::class, 'update'])->name('snacks.
 Route::delete('/snacks/{snack}/soft-delete', [SnackController::class, 'softDelete'])->name('snacks.soft-delete');
 Route::delete('/snacks/{snack}', [SnackController::class, 'destroy'])->name('snacks.destroy');
 Route::get('/snacks/{snack}/order', [SnackController::class, 'order'])->name('snacks.order');
+
+
+Route::get('/birthday_packages', [BirthdayPackageController::class, 'index'])->name('birthday_packages.index');
+Route::get('/birthday_packages/create', [BirthdayPackageController::class, 'create'])->name('birthday_packages.create');
+Route::post('/birthday_packages', [BirthdayPackageController::class, 'store'])->name('birthday_packages.store');
+Route::get('/birthday_packages/{birthday_package}', [BirthdayPackageController::class, 'show'])->name('birthday_packages.show');
+Route::get('/birthday_packages/{birthday_package}/edit', [BirthdayPackageController::class, 'edit'])->name('birthday_packages.edit')->where('birthday_package', '[0-9]+');
+Route::put('/birthday_packages/{birthday_package}', [BirthdayPackageController::class, 'update'])->name('birthday_packages.update');
+Route::delete('/birthday_packages/{birthday_package}', [BirthdayPackageController::class, 'destroy'])->name('birthday_packages.destroy');
+Route::delete('/birthday_packages/{birthday_package}/soft-delete', [BirthdayPackageController::class, 'softDelete'])->name('birthday_packages.soft-delete');
+
+
+
+Route::get('/mpesa/stk/{transaction_id}', [CheckoutController::class, 'mpesaPin'])->name('mpesa.stk');
+Route::get('/pay',[MpesaController::class, 'stk']);

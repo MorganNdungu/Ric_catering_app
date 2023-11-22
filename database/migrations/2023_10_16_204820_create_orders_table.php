@@ -19,6 +19,8 @@ return new class extends Migration
             $table->enum('payment', ['m-pesa', 'other_payment_methods']);
             $table->text('items');
             $table->timestamps();
+            $table->softDeletes();
+
         });
     }
 

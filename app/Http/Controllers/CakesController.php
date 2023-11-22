@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Cake;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 use App\Http\Controllers\CakesController;
 
 class CakesController extends Controller
@@ -75,13 +76,30 @@ class CakesController extends Controller
     }
 
 
+    public function softDelete($id)
+    {
+        $cake = Cake::find($id);
+
+        if (!$cake) {
+            return redirect()->route('cakes.index')->with('error', 'Cake not found');
+        }
+
+        return view('cakes.soft-delete', compact('cake'));
+    }
+
     public function destroy($id)
     {
-    $cake = Cake::find($id);
+        $cake = Cake::find($id);
 
-    $cake->delete();
+        if (!$cake) {
+            return redirect()->route('cakes.index')->with('error', 'Cake not found');
+        }
 
-    return redirect()->route('cakes.index')->with('success', 'Cake deleted successfully');
+        Storage::delete($cake->image_path);
+
+        $cake->delete();
+
+        return redirect()->route('cakes.index')->with('success', 'Cake soft deleted successfully');
     }
 
     public function update(Request $request, $id)
