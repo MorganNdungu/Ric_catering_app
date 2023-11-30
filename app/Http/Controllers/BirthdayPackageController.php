@@ -122,6 +122,17 @@ class BirthdayPackageController extends Controller
 
     return redirect()->route('birthday_packages.index')->with('success', 'Birthday package deleted successfully.');
 }
+public function addBook($id)
+{
+    $package = BirthdayPackage::find($id);
+
+    if (!$package) {
+        return redirect()->route('birthday_packages.index')->with('error', 'Package not found.');
+    }
+
+
+    return view('birthday_packages.add_book', compact('package'));
+}
 
 
     

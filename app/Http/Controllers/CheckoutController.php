@@ -49,7 +49,7 @@ class CheckoutController extends Controller
                 return redirect()->route('mpesa.pin', ['transaction_id' => $transactionId]);
             } else {
                 // Handle the case where STK Push initiation failed
-                return redirect()->route('checkout')->with('error', 'Failed to initiate M-Pesa payment.');
+                return redirect()->route('mpesa.stk', ['transaction_id' => $transactionId]);
             }
         }
 

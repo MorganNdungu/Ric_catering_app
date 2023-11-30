@@ -40,4 +40,13 @@ class OrderController extends Controller
         }
     }
     
+    public function confirmation(Request $request)
+{
+    // Retrieve order details from the request
+    $name = $request->input('name');
+    $address = $request->input('address');
+    $paymentMethod = $request->input('payment');
+
+    return view('order.confirmation', compact('name', 'address', 'paymentMethod'));
+}
 }

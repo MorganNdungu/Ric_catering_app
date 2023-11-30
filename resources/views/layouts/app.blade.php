@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <style>
         body{
-            background-image:image(C:\XAMPP\htdocs\RicApp-app\public\images\Paneer Tikka Recipe.jpeg)
+            /* background-image:background-color:  */
         }
         .navbar-toggler-icon {
             background-color: red; /* Customize the hamburger icon color */
@@ -30,8 +30,8 @@
         .navbar-nav {
             width: 100%;
             text-align: center;
-            color: aliceblue
-            background-color: rgb(36, 36, 102);
+            color: aliceblue;
+            background-color: rgb(72, 72, 244);
 
         }
 
@@ -65,7 +65,7 @@
         }
 
         .cart-username a {
-            color: blue; 
+            color: rgb(252, 252, 254); 
         }
     </style>
 </head>
@@ -120,15 +120,14 @@
                 <li class="nav-item"><a class="nav-link" href="{{ route('users.index') }}">Users</a></li>
                 @endhasrole
                 <li class="nav-item"><a class="nav-link" href="/items">Items</a></li>
-                <li class="nav-item"><a class="nav-link" href="/about">About</a></li>
-                <li class="nav-item"><a class="nav-link" href="/contact">Contact</a></li>
+                <li class="nav-item"><a class="nav-link" href="/about">About US</a></li>
+                <li class="nav-item"><a class="nav-link" href="/contact">Contact US</a></li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
     data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Services
+    Our Services
 </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Catering Services</a>
                         <a class="dropdown-item" href="{{ route('birthday_packages.index') }}">Birthday Packages</a>
                         <a class="dropdown-item" href="#">Wedding Package</a>
                         <a class="dropdown-item" href="{{ route('cakes.index') }}">Cakes</a>
@@ -158,8 +157,7 @@
             <div class="row">
                 <div class="col-md-4">
                     <h4>About Us</h4>
-                    <p>Your catering app provides delicious food for all occasions. We offer a wide range of services to
-                        make your events special.</p>
+                    <p>Your catering app provides delicious food for all occasions. We offer a wide range of services to make your events special.</p>
                 </div>
                 <div class="col-md-4">
                     <h4>Follow Us</h4>
@@ -167,12 +165,8 @@
                         <li><a href="#"><i class="fab fa-instagram"></i></a></li>
                         <li><a href="#"><i class="fab fa-facebook"></i></a></li>
                         <li><a href="#"><i class="fab fa-whatsapp"></i></a></li>
-                        <li>
-                            <a href="fb://page/{https://www.facebook.com/morgan.ndungu.52}">
-                                <img src="facebook-icon.png" alt="Facebook">
-                            </a>
-                        </li>
                     </ul>
+                    <p>Follow us on social media for the latest updates!</p>
                 </div>
                 <div class="col-md-4">
                     <h4>Contact Us</h4>
@@ -182,13 +176,14 @@
             </div>
             <div class="row">
                 <div class="col-md-12">
-                    <p class="copyright">Site designed by Morgan Ndung'u &copy; {{ date('Y') }}</p>
+                    <p class="copyright">Site designed by Morgan Ndung'u &copy; <?php echo date('Y'); ?></p>
                 </div>
             </div>
         </div>
     </footer>
+    
 
-    <script src="{{ asset('js/app.js') }}"></script>
+    {{-- <script src="{{ asset('js/app.js') }}"></script> --}}
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>

@@ -53,10 +53,34 @@ class CakesController extends Controller
     }
 
    
-    public function order($cakeId)
-    {
-        return redirect()->route('order.confirmation');
-    }
+    // public function order($cakeId)
+    // {
+    //     return redirect()->route('order.confirmation');
+    // }
+//     public function add($id)
+// {
+//     // Assuming you're using the session to store cart items
+//     $cartItems = session()->get('cart.cakes', []);
+
+//     // Check if the cake is already in the cart
+//     if (in_array($id, $cartItems)) {
+//         return redirect()->route('cakes.index')->with('info', 'Cake is already in the cart.');
+//     }
+
+//     // If not, add the cake to the cart
+//     $cartItems[] = $id;
+
+//     // Update the session with the new cart items
+//     session(['cart.cakes' => $cartItems]);
+
+//     // Debug messages
+//     // dd("Cake added to cart successfully!", $cartItems);
+
+//     // Redirect back to the cake index
+//     return redirect()->route('cakes.index')->with('success', 'Cake added to cart successfully!');
+// }
+
+
 
     public function edit($id)
     {

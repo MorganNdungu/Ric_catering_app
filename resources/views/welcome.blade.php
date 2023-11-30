@@ -1,3 +1,4 @@
+
 @extends('layouts.app')
 
 @section('title', 'Welcome to RicHarry Catering Services')
@@ -7,15 +8,13 @@
 
     <body style="background-image: url('{{ asset('images/Paneer Tikka Recipe.jpeg') }}'); background-size: cover; background-position: center; background-repeat: no-repeat; background-attachment: fixed; ">
 
-    
-
-    <div class="icons-details" >
+    <div class="container mt-5">
         <div class="row">
             <div class="col-md-3">
                 <div class="icon-box">
                     <i class="bi bi-geo-alt"></i>
                     <h4>Location</h4>
-                    <p>123 Main Street, City</p>
+                    <p>, Kiambu</p>
                 </div>
             </div>
             <div class="col-md-3">
@@ -40,11 +39,47 @@
                 </div>
             </div>
         </div>
+
+        <div class="row mt-5">
+            @php
+                $categoryImages = [
+                    'images/Chicken and Cauliflower Rice.jpeg',
+                    'images/Paneer Tikka Recipe.jpeg',
+                    'images/Rice with Chicken a Nigerian Recipe.jpeg',
+                    'images/Spicy bean sauce.jpeg',
+                    'images/cocktail.jpg',
+                    'images/Cookies and Milk Milkshakes.jpg',
+                    'images/Hot Dog.jpg',
+                    'images/Waffle Cone.jpg',
+                    'images/Father Day.jpeg',
+                    'images/Les dripping.jpeg',
+                    'images/Peanut Butter.jpeg',
+                    'images/Wedding Cake.jpeg',
+                ];
+            @endphp
+
+            @foreach ($categoryImages as $index => $image)
+                <div class="col-md-3">
+                    <div class="card d-flex flex-column h-100">
+                        <img src="{{ asset($image) }}" class="card-img-top" alt="Category Image {{ $index + 1 }}">
+                        <div class="card-body">
+                            <h5 class="card-title"> {{ $index + 1 }}</h5>
+                            <p class="card-text">enjoy your shopiiing.</p>
+                            <a href="/items" class="btn btn-primary mt-auto">View</a>
+                        </div>
+                    </div>
+                </div>
+                @if (($index + 1) % 4 === 0)
+                    </div>
+                    <div class="row mt-3">
+                @endif
+            @endforeach
+        </div>
     </div>
 
-    <!-- Add other sections and content as needed -->
 
     <script>
-        // Add any JavaScript specific to this page
     </script>
+</body>
+</html>
 @endsection

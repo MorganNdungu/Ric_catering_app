@@ -83,16 +83,9 @@ Route::group(['middleware'=>'auth'], function(){
 Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
 Route::post('password/reset', 'Auth\ResetPasswordController@reset');
 
-// Add items to the cart
-Route::post('/cart/add/{item}', [CartController::class, 'addItemToCart'])->name('cart.add');
-
-// View the cart
 Route::get('/cart', [CartController::class, 'viewCart'])->name('cart.view');
-
-// Update cart item quantity
+Route::post('/cart/add/{item}', [CartController::class, 'addItemToCart'])->name('cart.add');
 Route::put('/cart/update/{cartItem}', [CartController::class, 'updateCartItem'])->name('cart.update');
-
-// Remove items from the cart
 Route::delete('/cart/remove/{cartItem}', [CartController::class, 'removeCartItem'])->name('cart.remove');
 
 Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout');
@@ -111,14 +104,10 @@ Route::post('/place-order', [OrderController::class, 'placeOrder'])->name('order
 Route::get('/order-confirmation', [OrderController::class, 'confirmation'])->name('order.confirmation');
 
 Route::resource('cakes', CakesController::class);
-Route::get('/cakes', [CakesController::class, 'index'])->name('cakes.index');
-Route::post('cakes', [CakesController::class, 'store'])->name('cakes.store');
-Route::get('/cakes/create', [CakesController::class, 'create'])->name('cakes.create');
-Route::get('/cakes/{cakeId}/order', [CakesController::class, 'order'])->name('cakes.order');
-Route::put('/cakes/{cake}', [CakesController::class, 'update'])->name('cakes.update');
 Route::get('/cakes/{cake}/confirm-delete', [CakesController::class, 'confirmDelete'])->name('cakes.confirm-delete');
-Route::delete('/cakes/{cake}', [CakesController::class, 'destroy'])->name('cakes.destroy');
 
+// Route::get('/cakes/{cakeId}/order', [CakesController::class, 'order'])->name('cakes.order');
+// Route::post('/cakes/add-to-cart/{id}', [CakesController::class, 'add'])->name('cakes.addToCart');
 
 Route::get('/snacks', [SnackController::class, 'index'])->name('snacks.index');
 Route::get('/snacks/create', [SnackController::class, 'create'])->name('snacks.create');
@@ -139,8 +128,10 @@ Route::get('/birthday_packages/{birthday_package}/edit', [BirthdayPackageControl
 Route::put('/birthday_packages/{birthday_package}', [BirthdayPackageController::class, 'update'])->name('birthday_packages.update');
 Route::delete('/birthday_packages/{birthday_package}', [BirthdayPackageController::class, 'destroy'])->name('birthday_packages.destroy');
 Route::delete('/birthday_packages/{birthday_package}/soft-delete', [BirthdayPackageController::class, 'softDelete'])->name('birthday_packages.soft-delete');
+Route::get('/birthday-packages/add-book/{id}', [BirthdayPackageController::class, 'addBook'])->name('birthday_packages.add-book');
+
 
 
 
 Route::get('/mpesa/stk/{transaction_id}', [CheckoutController::class, 'mpesaPin'])->name('mpesa.stk');
-Route::get('/pay',[MpesaController::class, 'stk']);
+Route::post('/get-token',[MpesaController::class, 'getAccessToken']);

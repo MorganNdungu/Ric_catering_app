@@ -37,6 +37,12 @@
                             <p class="card-text">{{ $package->description }}</p>
                             <p class="card-text"><strong>Price:</strong> KSH {{ $package->price }}</p>
 
+                            <div class="btn-group">
+                                <a href="{{ route('birthday_packages.add-book', $package->id) }}" class="btn btn-success mb-3"><i class="bi bi-book"></i>Book Now</a>
+
+                            </div>
+
+
                             @hasrole('Admin')
                                 <div class="btn-group">
                                     <a href="{{ route('birthday_packages.edit', $package->id) }}" ><i class="bi bi-pencil-square btn btn-outline-success"></i></a>
