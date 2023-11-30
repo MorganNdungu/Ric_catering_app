@@ -79,6 +79,8 @@
                 (0 items)
             @endif
         </a>
+        <li><a href="{{ route('bookings.index') }}">Bookings</a></li>
+
         @guest
             @if (Route::has('login'))
                 <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>

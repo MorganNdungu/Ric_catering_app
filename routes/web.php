@@ -9,6 +9,7 @@ use App\Http\Controllers\CakesController;
 use App\Http\Controllers\MpesaController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\SnackController;
+use App\Http\Controllers\BookingController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\DashboardController;
@@ -129,6 +130,15 @@ Route::put('/birthday_packages/{birthday_package}', [BirthdayPackageController::
 Route::delete('/birthday_packages/{birthday_package}', [BirthdayPackageController::class, 'destroy'])->name('birthday_packages.destroy');
 Route::delete('/birthday_packages/{birthday_package}/soft-delete', [BirthdayPackageController::class, 'softDelete'])->name('birthday_packages.soft-delete');
 Route::get('/birthday-packages/add-book/{id}', [BirthdayPackageController::class, 'addBook'])->name('birthday_packages.add-book');
+Route::get('birthday-packages/{id}/book', [BirthdayPackageController::class, 'showBookingForm'])->name('birthday_packages.show_booking_form');
+
+
+
+Route::get('/bookings', [BookingController::class, 'index'])->name('bookings.index');
+Route::post('/birthday-packages/{packageId}/book', [BookingController::class, 'store'])->name('birthday_packages.book');
+Route::post('bookings', [BookingController::class, 'store'])->name('bookings.store');
+Route::post('/book-venue', [BookingController::class, 'bookVenue'])->name('book-venue');
+Route::get('/booking-confirmation', [BookingController::class, 'showConfirmation'])->name('bookings.confirmation');
 
 
 

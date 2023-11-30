@@ -12,9 +12,16 @@ class BirthdayPackageController extends Controller
     
     public function index()
     {
+        // Retrieve all birthday packages
         $birthdayPackages = BirthdayPackage::all();
-        return view('birthday_packages.index', compact('birthdayPackages'));
+
+        // Check for the booking success session variable
+        $bookingSuccess = session('booking_success');
+
+        // Return the view with the birthday packages and booking success variable
+        return view('birthday_packages.index', compact('birthdayPackages', 'bookingSuccess'));
     }
+
     
     
         public function create()
@@ -123,17 +130,26 @@ class BirthdayPackageController extends Controller
     return redirect()->route('birthday_packages.index')->with('success', 'Birthday package deleted successfully.');
 }
 public function addBook($id)
-{
-    $package = BirthdayPackage::find($id);
+    {
+        $package = BirthdayPackage::find($id);
 
-    if (!$package) {
-        return redirect()->route('birthday_packages.index')->with('error', 'Package not found.');
+        if (!$package) {
+            return redirect()->route('birthday_packages.index')->with('error', 'Package not found.');
+        }
+
+        return view('birthday_packages.add_book', compact('package'));
     }
 
 
-    return view('birthday_packages.add_book', compact('package'));
-}
-
-
+    public function showBookingForm($id)
+    {
+        $package = BirthdayPackage::find($id);
     
+        if (!$package) {
+            return redirect()->route('birthday_packages.index')->with('error', 'Package not found.');
+        }
+    
+        return view('birthday_packages.book', compact('package'));
+    }
+   
 }

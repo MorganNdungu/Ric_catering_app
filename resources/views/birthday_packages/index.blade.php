@@ -4,7 +4,7 @@
 
 @section('content')
     <div class="container mt-5">
-        <h1 class="mb-4">Birthday Packages</h1>
+        <h1 class="mb-4">Venues</h1>
 
         @if(session('success'))
             <div class="alert alert-success">
@@ -17,7 +17,7 @@
                 {{ session('error') }}
             </div>
         @endif
-
+        
         @hasrole('Admin')
             <a href="{{ route('birthday_packages.create') }}" class="btn btn-primary mb-3"><i class="bi bi-plus"></i></a>
         @endhasrole
@@ -37,10 +37,11 @@
                             <p class="card-text">{{ $package->description }}</p>
                             <p class="card-text"><strong>Price:</strong> KSH {{ $package->price }}</p>
 
-                            <div class="btn-group">
-                                <a href="{{ route('birthday_packages.add-book', $package->id) }}" class="btn btn-success mb-3"><i class="bi bi-book"></i>Book Now</a>
-
-                            </div>
+                            <form method="GET" action="{{ route('birthday_packages.show_booking_form', $package->id) }}">
+                                @csrf
+                                <button type="submit" class="btn btn-success mb-3"><i class="bi bi-book"></i>Book Now</button>
+                            </form>
+                            
 
 
                             @hasrole('Admin')
