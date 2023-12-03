@@ -79,8 +79,9 @@
                 (0 items)
             @endif
         </a>
+        @hasrole('Admin')
         <li><a href="{{ route('bookings.index') }}">Bookings</a></li>
-
+        @endhasrole
         @guest
             @if (Route::has('login'))
                 <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
@@ -130,11 +131,9 @@
     Our Services
 </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="{{ route('birthday_packages.index') }}">Birthday Packages</a>
-                        <a class="dropdown-item" href="#">Wedding Package</a>
+                        <a class="dropdown-item" href="{{ route('birthday_packages.index') }}">Venue & Packages</a>
                         <a class="dropdown-item" href="{{ route('cakes.index') }}">Cakes</a>
                         <a class="dropdown-item" href="{{ route('snacks.index') }}">Snacks</a>
-                        <a class="dropdown-item" href="#">Traditional Meals</a>
                     </div>
                 </li>
             </ul>

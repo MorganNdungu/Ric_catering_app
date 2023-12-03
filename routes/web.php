@@ -14,6 +14,7 @@ use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\BirthdayPackageController;
+use App\Http\Controllers\Auth\ForgotPasswordController;
 
 Auth::routes();
 
@@ -32,6 +33,14 @@ Route::get('/contact', function () {
 Route::get('/services', function () {
     return view('services');
 });
+
+// Forgot Password Routes
+Route::get('password/reset', [ForgotPasswordController::class, 'showLinkRequestForm'])->name('password.request');
+Route::post('password/email', [ForgotPasswordController::class, 'sendResetLinkEmail'])->name('password.email');
+
+// Password Reset Routes
+Route::get('password/reset/{token}', [ResetPasswordController::class, 'showResetForm'])->name('password.reset');
+Route::post('password/reset', [ResetPasswordController::class, 'reset']);
 
 
 Route::get('/items', [ItemController::class, 'index'])->name('items.index');
@@ -73,6 +82,8 @@ Route::group(['middleware'=>'auth'], function(){
     Route::resource('users',UserController::class);
     Route::get('/users/{user}/edit-role', [UserController::class, 'editRole'])->name('users.edit-role');
     Route::put('/users/{user}/update-role', [UserController::class, 'updateRole'])->name('users.update-role');
+    Route::get('/users', [UserController::class, 'index'])->name('users.index');
+
     Route::get('/cart', [CartController::class, 'viewcart'])->name('cart.view');
 
 

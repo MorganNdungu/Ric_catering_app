@@ -31,7 +31,7 @@ return [
     'table_names' => [
 
         /*
-         * When using the "HasRoles" trait from this package, we need to know which
+         * When using the "Admins" trait from this package, we need to know which
          * table should be used to retrieve your roles. We have chosen a basic
          * default value but you may easily change it to any table you like.
          */

@@ -10,16 +10,16 @@ use App\Http\Controllers\Auth\ForgotPasswordController;
 class ForgotPasswordController extends Controller
 {
     public function sendResetLinkEmail(Request $request)
-    {
-        $this->validate($request, ['email' => 'required|email']);
-    
-        $response = $this->broker()->sendResetLink(
-            $request->only('email')
-        );
-    
-        // Display a success or error message to the user based on $response.
-        // For example, you can check $response for PasswordBroker constants like Password::RESET_LINK_SENT and Password::INVALID_USER.
-    } 
+{
+    $this->validate($request, ['email' => 'required|email']);
+
+    $response = $this->broker()->sendResetLink(
+        $request->only('email')
+    );
+
+    dd($response); // or use logger()->info($response);
+}
+
     public function showLinkRequestForm()
 {
     return view('auth.passwords.email');

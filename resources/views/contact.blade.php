@@ -13,10 +13,16 @@
                 <h2 class="mb-4">Get in Touch</h2>
                 <p class="lead">We would love to hear from you. If you have any questions, inquiries, or if you'd like to discuss a catering service for your upcoming event, please feel free to contact us.</p>
                 <p>Use the form below or reach out to us via phone or email. Our team is ready to assist you.</p>
+                
             </div>
             <div class="col-md-6">
-                <p class="text-muted">Contact Form Placeholder</p>
+                <h4>Contact Us</h4>
+                <ul>
+                    <li>Phone: 07XX XXX XXX</li>
+                    <li>Email: ric@gmail.com</li>
+                </ul>
             </div>
+            >
         </div>
 
         <div class="row mt-5">
