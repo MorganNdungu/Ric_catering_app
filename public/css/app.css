@@ -71,4 +71,17 @@ nav a {
 .dropdown:hover .dropdown-content {
     display: block;
 }
+/* public/css/styles.css */
+
+.profile-info {
+    max-width: 400px; /* Adjust the maximum width of the profile information */
+    margin: auto;
+}
+
+.profile-pic {
+    max-width: 100%;
+    height: auto; 
+    max-height: 200px;
+    margin-top: 10px; 
+}
 

@@ -10,6 +10,7 @@ use App\Http\Controllers\MpesaController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\SnackController;
 use App\Http\Controllers\BookingController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\DashboardController;
@@ -86,6 +87,14 @@ Route::group(['middleware'=>'auth'], function(){
 
     Route::get('/cart', [CartController::class, 'viewcart'])->name('cart.view');
 
+    Route::get('/profile', [ProfileController::class, 'show'])->name('profile.show');
+    Route::post('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
+    Route::get('/profile/update', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::get('/profile/change-password', [ProfileController::class, 'showChangePasswordForm'])->name('profile.change-password.form');
+    Route::post('/profile/change-password', [ProfileController::class, 'changePassword'])->name('profile.change-password');
+
+    Route::get('/profile/change-email', [ProfileController::class, 'showChangeEmailForm'])->name('profile.change-email.form');
+    Route::post('/profile/change-email', [ProfileController::class, 'changeEmail'])->name('profile.change-email');
 
 
 

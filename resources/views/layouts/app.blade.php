@@ -82,6 +82,10 @@
         @hasrole('Admin')
         <li><a href="{{ route('bookings.index') }}">Bookings</a></li>
         @endhasrole
+        <div>
+            <a href="{{ route('profile.show') }}">Update Profile</a>
+ 
+        </div>
         @guest
             @if (Route::has('login'))
                 <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
@@ -138,9 +142,17 @@
                 </li>
             </ul>
         </div>
+        
     </nav>
 
     <div class="container">
+        @auth
+        @if(auth()->user()->profile_pic)
+            <img src="{{ asset('storage/profile_pics/' . auth()->user()->profile_pic) }}" alt="Profile Picture" class="img-fluid rounded-circle" style="max-width: 150px; max-height: 150px;">
+        @endif
+    @endauth
+    
+        
         <h1>@yield('page-title')</h1>
 
         @if(session('status'))
