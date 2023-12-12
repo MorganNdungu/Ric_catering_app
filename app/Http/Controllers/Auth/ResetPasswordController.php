@@ -34,7 +34,6 @@ class ResetPasswordController extends Controller
             }
         );
     
-        // Handle success or error response.
     }
     
 

@@ -19,7 +19,6 @@ class BookingController extends Controller
         $booking = Booking::create([
             'full_name' => $request->input('full_name'),
             'phone_number' => $request->input('phone_number'),
-            // Add other columns as needed
         ]);
 
         // Redirect to the booking confirmation page
@@ -41,7 +40,7 @@ class BookingController extends Controller
     public function index()
     {
         // Retrieve booked venues data from the database
-        $bookedVenues = Booking::all(); // Adjust this query based on your actual requirements
+        $bookedVenues = Booking::all(); 
 
         return view('bookings.index', [
             'bookedVenues' => $bookedVenues,

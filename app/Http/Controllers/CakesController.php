@@ -47,7 +47,6 @@ class CakesController extends Controller
 
             return redirect()->route('cakes.index')->with('success', 'Cake created successfully');
         } else {
-            // Handle the case where no image was uploaded
             return back()->withInput()->with('error', 'Please upload an image for the cake.');
         }
     }

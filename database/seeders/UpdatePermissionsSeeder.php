@@ -16,10 +16,10 @@ class UpdatePermissionsSeeder extends Seeder
 {
     $permissions = [
        
-        'view-items',    // Updated permission name
+        'view-items',    
         'item-create',
         'item-edit',
-        'delete-items',  // New permission
+        'delete-items',  
     ];
 
     foreach ($permissions as $permission) {

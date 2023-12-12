@@ -3,7 +3,7 @@
 @section('content')
     <link href="{{ asset('css/cart.css') }}" rel="stylesheet" type="text/css">
 
-    <div> <!-- Add this div tag to properly open the container -->
+    <div> 
         <h1>Shopping Cart</h1>
 
         @if ($cartItems->count() > 0)
@@ -47,5 +47,5 @@
         @else
             <p>Your cart is empty.</p>
         @endif
-    </div> <!-- Close the div tag to properly close the container -->
+    </div>
 @endsection

@@ -12,5 +12,4 @@ class AdminController extends Controller
         return view('admin.dashboard');
     }
 
-    // Add more methods for admin functionality here
 }

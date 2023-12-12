@@ -1,4 +1,3 @@
-<!-- resources/views/profile/change-email.blade.php -->
 
 @extends('layouts.app')
 

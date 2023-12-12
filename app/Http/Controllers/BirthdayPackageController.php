@@ -24,12 +24,12 @@ class BirthdayPackageController extends Controller
 
     
     
-        public function create()
+    public function create()
         {
             return view('birthday_packages.create');
         }
     
-        public function store(Request $request)
+    public function store(Request $request)
         {
             $validatedData = $request->validate([
                 'name' => 'required|string|max:255',
@@ -128,8 +128,8 @@ class BirthdayPackageController extends Controller
     $package->delete();
 
     return redirect()->route('birthday_packages.index')->with('success', 'Birthday package deleted successfully.');
-}
-public function addBook($id)
+    }
+    public function addBook($id)
     {
         $package = BirthdayPackage::find($id);
 

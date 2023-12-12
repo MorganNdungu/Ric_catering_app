@@ -17,7 +17,6 @@
             <option value="m-pesa">M-Pesa</option>
         </select>
         
-        <!-- M-Pesa phone number input (initially hidden) -->
         <div id="mpesaPhone" style="display: none;">
             <label for="phone">M-Pesa Number</label>
             <input type="text" name="phone" id="mpesaPhoneField" required>
@@ -32,15 +31,12 @@
            var paymentMethod = document.getElementById('paymentMethod');
            var mpesaPhone = document.getElementById('mpesaPhone');
 
-           // If M-Pesa is selected, show the phone input; otherwise, hide it
            mpesaPhone.style.display = (paymentMethod.value === 'm-pesa') ? 'block' : 'none';
        }
 
        // Function to be called on form submission
        function prepareCheckout() {
-           // Your preparation logic here
-
-           // Return true to allow the form submission, or false to cancel it
+           
            return true;
        }
    </script>

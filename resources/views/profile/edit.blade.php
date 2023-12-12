@@ -37,7 +37,6 @@
             <button type="submit" class="btn btn-primary">Update Profile</button>
         </form>
 
-        <!-- Display current profile picture -->
         @if(auth()->user()->profile_pic)
             <img src="{{ asset('storage/profile_pics/' . auth()->user()->profile_pic) }}" alt="Profile Picture" class="mt-3">
         @endif

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Order; // Make sure to import the Order model
+use App\Models\Order; 
 use App\Http\Controllers\Controller;
 use Safaricom\Mpesa\Mpesa;
 
@@ -16,7 +16,6 @@ class CheckoutController extends Controller
 
     public function placeOrder(Request $request)
     {
-        // Validate the form data
         $request->validate([
             'name' => 'required|string',
             'address' => 'required|string',
@@ -24,17 +23,17 @@ class CheckoutController extends Controller
             'phone' => 'required_if:payment,m-pesa|numeric',
         ]);
 
-        // Your code for processing the order, e.g., saving to the database
+        //processing the order by saving to the database
         $order = Order::create([
             'name' => $request->input('name'),
             'address' => $request->input('address'),
             'payment_method' => $request->input('payment'),
             'phone' => $request->input('phone'),
-            // Add other fields as needed
         ]);
 
         // Check if the payment method is M-Pesa
         if ($request->payment === 'm-pesa') {
+
             // Get the phone number from the request
             $phoneNumber = $request->phone;
 
@@ -53,7 +52,7 @@ class CheckoutController extends Controller
             }
         }
 
-        // Redirect to a confirmation page or do other necessary actions
+        // Redirect to a confirmation page
         return redirect()->route('order.confirmation');
     }
 
@@ -71,12 +70,10 @@ class CheckoutController extends Controller
     {
         $mpesa = new Mpesa();
 
-        // Set other required parameters
         $businessShortCode = '174379';
         $lipaNaMpesaPasskey = 'bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1ed2c919';
-        $amount = $order->total; // Assuming 'total' is a field in your Order model
+        $amount = $order->total; 
 
-        // Use Daraja's STKPushSimulation method or another method based on the package
         $response = $mpesa->STKPushSimulation($businessShortCode, $lipaNaMpesaPasskey, $amount, $phoneNumber, $transactionId);
 
         return $response;

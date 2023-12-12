@@ -19,7 +19,6 @@ class ProfileController extends Controller
     public function show()
     {
         return view('profile.show');
-        // You can create a Blade view file at resources/views/profile/show.blade.php
     }
 
     public function edit()
@@ -48,25 +47,25 @@ class ProfileController extends Controller
     }
 
 
-public function showChangePasswordForm()
-{
-    return view('profile.change-password');
-}
+    public function showChangePasswordForm()
+    {
+        return view('profile.change-password');
+    }
 
-public function updatePhone(Request $request)
-{
-    $user = Auth::user();
+    public function updatePhone(Request $request)
+    {
+        $user = Auth::user();
 
-    $request->validate([
-        'phone' => 'nullable|string',
-    ]);
+        $request->validate([
+            'phone' => 'nullable|string',
+        ]);
 
-    $user->update([
-        'phone' => $request->input('phone'),
-    ]);
+        $user->update([
+            'phone' => $request->input('phone'),
+        ]);
 
-    return redirect()->route('profile.edit')->with('success', 'Phone number updated successfully.');
-}
+        return redirect()->route('profile.edit')->with('success', 'Phone number updated successfully.');
+    }
 
 
     
@@ -104,10 +103,12 @@ public function updatePhone(Request $request)
 
         return redirect()->route('profile.show')->with('success', 'Profile updated successfully!');
     }
+
     public function showChangeEmailForm()
     {
         return view('profile.change-email');
     }
+    
     public function editPhoneForm()
     {
         return view('profile.edit-phone');

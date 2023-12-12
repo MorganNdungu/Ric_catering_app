@@ -16,7 +16,6 @@
 
                     {{ __('You are logged in!') }}
 
-                    {{-- Category: Cakes --}}
                     <div class="mt-4">
                         <h2>Cakes</h2>
                         <div class="row">
@@ -26,7 +25,6 @@
                                         <div class="card-body">
                                             <h5 class="card-title">{{ $cake->name }}</h5>
                                             <p class="card-text">{{ $cake->description }}</p>
-                                            {{-- Add other cake card details here --}}
                                         </div>
                                     </div>
                                 </div>

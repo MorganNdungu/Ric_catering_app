@@ -7,5 +7,4 @@
 @endsection
 
 @section('content')
-    <!-- Add content specific to the Services page here -->
 @endsection

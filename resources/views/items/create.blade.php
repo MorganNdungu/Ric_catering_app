@@ -7,7 +7,7 @@
 @endsection
 
 @section('content')
-    <link rel="stylesheet" href="{{ asset('css/create.css') }}"> <!-- Link to your custom CSS file -->
+    <link rel="stylesheet" href="{{ asset('css/create.css') }}"> 
 
     <form method="POST" action="{{ route('items.store') }}" enctype="multipart/form-data">
         @csrf

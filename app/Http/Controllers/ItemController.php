@@ -27,7 +27,7 @@ class ItemController extends Controller
 
         // Handle image update if a new image is provided
         if ($request->hasFile('image')) {
-            Storage::delete($item->image); // Delete the old image
+            Storage::delete($item->image); 
             $image = $request->file('image');
             $imageName = time() . '.' . $image->getClientOriginalExtension();
             $image->move(public_path('images'), $imageName);
@@ -96,7 +96,7 @@ class ItemController extends Controller
 
         Storage::delete($item->image_path);
 
-        $item->delete(); // Soft delete
+        $item->delete(); 
 
         return redirect()->route('items.index')->with('success', 'Item soft deleted successfully.');
     }
@@ -106,10 +106,9 @@ class ItemController extends Controller
         return view('items.show', compact('item'));
     }
 
-    // Add the destroy method for soft deletion
     public function destroy(Item $item)
     {
-        $item->delete(); // Soft delete
+        $item->delete(); 
 
         return redirect()->route('items.index')->with('success', 'Item soft deleted successfully.');
     }

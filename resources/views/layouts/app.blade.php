@@ -14,17 +14,16 @@
             /* background-image:background-color:  */
         }
         .navbar-toggler-icon {
-            background-color: red; /* Customize the hamburger icon color */
+            background-color: red; 
         }
 
-        /* Additional styles for positioning cart and username */
         .cart-username {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 10px;
             color: red;
-            background-color: rgb(87, 32, 32); /* Set the color to white for better visibility */
+            background-color: rgb(87, 32, 32);
         }
 
         .navbar-nav {
@@ -43,10 +42,9 @@
             border-top: 1px solid #190202;
             padding: 10px;
             text-align: left;
-            position: relative; /* Required for positioning the image */
+            position: relative;
         }
 
-        /* Blur the background image */
         .navbar-collapse::after {
             content: '';
             background: url('path/to/your/image.jpg') center/cover no-repeat;
@@ -59,9 +57,8 @@
             z-index: -1;
         }
 
-        /* Customize color for login, register, and cart links */
         .navbar-nav .nav-item a {
-            color: #007bff; /* Set the color to blue (you can change it) */
+            color: #007bff; 
         }
 
         .cart-username a {

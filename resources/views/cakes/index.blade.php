@@ -17,7 +17,6 @@
             <p class="cake-price">Price: KSH{{ $cake->price }}</p>
             {{-- <a href="{{ route('cakes.order', ['id' => $cake->id]) }}" class="order-button">Order Now</a> --}}
 
-            <!-- Add to Cart button -->
             <form action="{{ route('cart.add', $cake->id) }}" method="POST">
                 @csrf
                 <div class="input-group">

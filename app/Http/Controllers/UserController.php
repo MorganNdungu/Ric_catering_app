@@ -12,7 +12,6 @@ class UserController extends Controller
 {
     public function editRole(User $user)
 {
-    // You can use the $user variable to pass the user whose role you want to edit to the view
     return view('users.edit-role', compact('user'));
 }
 
@@ -33,7 +32,7 @@ public function updateRole(User $user)
 
 public function index()
 {
-    $users = User::all(); // Retrieve all users from the database
+    $users = User::all(); 
     return view('users.index', compact('users'));
 }
 

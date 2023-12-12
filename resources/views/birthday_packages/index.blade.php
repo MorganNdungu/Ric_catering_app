@@ -29,7 +29,6 @@
                         @if($package->images->isNotEmpty())
                             <img src="{{ asset('storage/' . $package->images->first()->image_path) }}" class="card-img-top" alt="{{ $package->name }}">
                         @else
-                            <!-- Display a default image if no images are available -->
                             <img src="{{ asset('path-to-your-default-image.jpg') }}" class="card-img-top" alt="{{ $package->name }}">
                         @endif
                         <div class="card-body">

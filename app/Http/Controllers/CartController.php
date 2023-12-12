@@ -6,7 +6,7 @@ use App\Models\Item;
 use App\Models\CartItem;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Http\Request; // Make sure to import the Request class
+use Illuminate\Http\Request; 
 
 class CartController extends Controller {
     public function addItemToCart(Item $item)
@@ -37,7 +37,7 @@ class CartController extends Controller {
                 $cartItemCount = $cart->cartItems->count();
             } else {
                 $cartItems = collect(); // Create an empty collection if the cart is not found.
-                $total = 0; // Total is zero when the cart is empty.
+                $total = 0; 
             }
     
             return view('cart', compact('cartItems', 'total', 'cartItemCount'));
@@ -54,16 +54,16 @@ class CartController extends Controller {
         if (Auth::check()) {
             $user = Auth::user();
             $cart = Cart::firstOrCreate(['user_id' => $user->id]);
-            $cartItemCount = $cart->cartItems->count(); // Count the items in the cart
+            $cartItemCount = $cart->cartItems->count(); 
             $cartItems = $cart->cartItems;
             $total = $cartItems->sum(function ($cartItem) {
                 return $cartItem->item->price * $cartItem->quantity;
             });
         } else {
             // Handle the case where the user is not authenticated
-            $cartItemCount = 0; // Set it to zero when the user is not authenticated
-            $cartItems = collect(); // Create an empty collection if the cart is not found.
-            $total = 0; // Total is zero when the cart is empty.
+            $cartItemCount = 0; 
+            $cartItems = collect(); 
+            $total = 0; 
         }
     
         return view('cart', compact('cartItems', 'total', 'cartItemCount'));

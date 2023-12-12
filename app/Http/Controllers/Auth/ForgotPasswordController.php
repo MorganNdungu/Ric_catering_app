@@ -17,7 +17,7 @@ class ForgotPasswordController extends Controller
         $request->only('email')
     );
 
-    dd($response); // or use logger()->info($response);
+    dd($response); 
 }
 
     public function showLinkRequestForm()

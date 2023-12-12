@@ -1,4 +1,3 @@
-<!-- orders.blade.php -->
 
 @extends('layouts.app')
 

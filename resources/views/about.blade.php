@@ -25,7 +25,6 @@
                 <p>Whether it's crafting a personalized menu, ensuring impeccable presentation, or providing top-notch service, we are dedicated to making your special moments truly unforgettable.</p>
             </div>
             <div class="col-md-6">
-                <!-- You can add another image here if needed -->
             </div>
         </div>
     </div>

@@ -10,7 +10,7 @@ class WelcomeController extends Controller
 {
     public function index()
     {
-        $featuredItems = Item::take(3)->get(); // Change the query to get the featured items
+        $featuredItems = Item::take(3)->get(); 
 
         return view('welcome', compact('featuredItems'));
     }

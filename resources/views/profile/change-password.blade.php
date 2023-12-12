@@ -1,4 +1,3 @@
-<!-- resources/views/profile/change-password.blade.php -->
 
 @extends('layouts.app')
 
@@ -14,7 +13,6 @@
 
         <div class="card">
             <div class="card-body">
-                <!-- Include a form for changing the password -->
                 <form method="POST" action="{{ route('profile.change-password') }}">
                     @csrf
 

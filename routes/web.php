@@ -17,7 +17,7 @@ use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\BirthdayPackageController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
-use App\Http\Controllers\Auth\ResetPasswordController; // Add this line
+use App\Http\Controllers\Auth\ResetPasswordController; 
 
 Auth::routes();
 

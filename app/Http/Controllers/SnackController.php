@@ -9,14 +9,13 @@ use App\Http\Controllers\SnackController;
 
 class SnackController extends Controller
 {
-    // ... (existing methods)
 
     public function store(Request $request)
     {
         $request->validate([
             'name' => 'required',
             'description' => 'required',
-            'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048', // Validate image upload
+            'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
         $data = $request->all();
@@ -76,14 +75,13 @@ class SnackController extends Controller
         $request->validate([
             'name' => 'required',
             'description' => 'required',
-            'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048', // Validate image upload
+            'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
         $data = $request->all();
 
         // Handle image upload
         if ($request->hasFile('image')) {
-            // Delete old image
             if ($snack->image_path) {
                 Storage::disk('public')->delete($snack->image_path);
             }
@@ -98,5 +96,4 @@ class SnackController extends Controller
         return redirect()->route('snacks.index')->with('success', 'Snack updated successfully.');
     }
 
-    // ... (existing methods)
 }

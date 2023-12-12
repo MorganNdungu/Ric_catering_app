@@ -13,7 +13,6 @@ class BirthdayPackageImage extends Model
         'image_path',
     ];
 
-    // Define a relationship with the package
     public function package(): BelongsTo
     {
         return $this->belongsTo(BirthdayPackage::class);
