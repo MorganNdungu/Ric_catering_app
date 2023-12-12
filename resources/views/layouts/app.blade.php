@@ -86,6 +86,14 @@
             <a href="{{ route('profile.show') }}">Update Profile</a>
  
         </div>
+
+        @hasrole('Admin')
+        <div>
+            <li><a href="{{ route('profile.orders') }}">Orders</a></li>
+
+        </div>
+        @endhasrole
+
         @guest
             @if (Route::has('login'))
                 <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>

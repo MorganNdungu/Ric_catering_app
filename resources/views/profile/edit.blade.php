@@ -24,8 +24,11 @@
                 <input type="email" id="email" name="email" value="{{ auth()->user()->email }}" class="form-control" required>
             </div>
 
-            <!-- Add other profile fields as needed -->
-
+            <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="text" id="phone" name="phone" value="{{ auth()->user()->phone }}" class="form-control">
+            </div>
+            
             <div class="form-group">
                 <label for="profile_pic">Profile Picture</label>
                 <input type="file" id="profile_pic" name="profile_pic" class="form-control-file">

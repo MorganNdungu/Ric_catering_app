@@ -1,4 +1,5 @@
 <?php
+
 use App\Models\Item;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CartController;
@@ -16,13 +17,14 @@ use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\BirthdayPackageController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
+use App\Http\Controllers\Auth\ResetPasswordController; // Add this line
 
 Auth::routes();
 
 Route::get('/', function () {
-
-    return view('welcome',);
+    return view('welcome');
 });
+
 Route::get('/about', function () {
     return view('about');
 });
@@ -43,7 +45,6 @@ Route::post('password/email', [ForgotPasswordController::class, 'sendResetLinkEm
 Route::get('password/reset/{token}', [ResetPasswordController::class, 'showResetForm'])->name('password.reset');
 Route::post('password/reset', [ResetPasswordController::class, 'reset']);
 
-
 Route::get('/items', [ItemController::class, 'index'])->name('items.index');
 Route::get('/items/create', [ItemController::class, 'create'])->name('items.create');
 Route::post('/items', [ItemController::class, 'store'])->name('items.store');
@@ -53,7 +54,6 @@ Route::put('/items/{item}', [ItemController::class, 'update'])->name('items.upda
 Route::delete('/items/{item}', [ItemController::class, 'destroy'])->name('items.destroy');
 
 Route::post('/addToCart/{item}', [CartController::class, 'addToCart'])->name('addToCart');
-
 
 Route::get('/login', function () {
     return view('auth.login');
@@ -66,43 +66,44 @@ Route::get('/register', function () {
 
 Route::post('/logout', [Auth\LoginController::class, 'logout'])->name('logout');
 
-// Route::get('/users', [UserController::class, 'index'])->name('users.index');
-// Route::get('/users/{users}/edit-role', [UserController::class, 'editRole'])->name('users.edit-role');
-
-
 Auth::routes();
 
 Route::get('/Dashboard', [DashboardController::class, 'Dashboard'])->name('Dashboard');
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
-Route::group(['middleware'=>'auth'], function(){
+Route::group(['middleware' => 'auth'], function () {
+    
     Route::view('/dashboard', 'dashboard');
-    // Route::view('/items', 'item');
-    // Route::view('/users', 'user');
-    // Route::view('/services', 'service');
-    Route::resource('users',UserController::class);
+    Route::resource('users', UserController::class);
     Route::get('/users/{user}/edit-role', [UserController::class, 'editRole'])->name('users.edit-role');
     Route::put('/users/{user}/update-role', [UserController::class, 'updateRole'])->name('users.update-role');
     Route::get('/users', [UserController::class, 'index'])->name('users.index');
 
     Route::get('/cart', [CartController::class, 'viewcart'])->name('cart.view');
-
     Route::get('/profile', [ProfileController::class, 'show'])->name('profile.show');
     Route::post('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
-    Route::get('/profile/update', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::get('/profile/change-password', [ProfileController::class, 'showChangePasswordForm'])->name('profile.change-password.form');
     Route::post('/profile/change-password', [ProfileController::class, 'changePassword'])->name('profile.change-password');
-
+    
     Route::get('/profile/change-email', [ProfileController::class, 'showChangeEmailForm'])->name('profile.change-email.form');
     Route::post('/profile/change-email', [ProfileController::class, 'changeEmail'])->name('profile.change-email');
+    Route::post('/profile/update-phone', [ProfileController::class, 'updatePhone'])->name('profile.update-phone');
+    Route::get('/profile/edit-phone', [ProfileController::class, 'editPhoneForm'])->name('profile.edit-phone.form');
+    
+
+    Route::get('/bookings', [BookingController::class, 'index'])->name('bookings.index');
+    Route::post('/birthday-packages/{packageId}/book', [BookingController::class, 'store'])->name('birthday_packages.book');
+    Route::get('/booking-confirmation', [BookingController::class, 'showConfirmation'])->name('bookings.confirmation');
+    Route::post('/book-venue', [BookingController::class, 'bookVenue'])->name('book-venue');
 
 
-
+    Route::get('/profile/orders', [ProfileController::class, 'showOrders'])->name('profile.orders');
 
 });
 
-Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
-Route::post('password/reset', 'Auth\ResetPasswordController@reset');
+Route::get('password/reset/{token}', [ResetPasswordController::class, 'showResetForm'])->name('password.reset');
+Route::post('password/reset', [ResetPasswordController::class, 'reset']);
 
 Route::get('/cart', [CartController::class, 'viewCart'])->name('cart.view');
 Route::post('/cart/add/{item}', [CartController::class, 'addItemToCart'])->name('cart.add');
@@ -110,25 +111,17 @@ Route::put('/cart/update/{cartItem}', [CartController::class, 'updateCartItem'])
 Route::delete('/cart/remove/{cartItem}', [CartController::class, 'removeCartItem'])->name('cart.remove');
 
 Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout');
-
-// Checkout and place an order
-// Route::post('/checkout', [OrderController::class, 'placeOrder'])->name('order.place');
-
-Route::post('/place-order', 'CheckoutController@placeOrder')->name('order.place');
+Route::post('/place-order', [CheckoutController::class, 'placeOrder'])->name('order.place');
 
 Route::get('/checkout', [CheckoutController::class, 'showCheckoutForm'])->name('checkout');
 Route::post('/place-order', [CheckoutController::class, 'placeOrder'])->name('order.place');
 Route::post('/mpesa/confirm', [CheckoutController::class, 'confirmMpesaPIN'])->name('mpesa.confirm');
-
 
 Route::post('/place-order', [OrderController::class, 'placeOrder'])->name('order.place');
 Route::get('/order-confirmation', [OrderController::class, 'confirmation'])->name('order.confirmation');
 
 Route::resource('cakes', CakesController::class);
 Route::get('/cakes/{cake}/confirm-delete', [CakesController::class, 'confirmDelete'])->name('cakes.confirm-delete');
-
-// Route::get('/cakes/{cakeId}/order', [CakesController::class, 'order'])->name('cakes.order');
-// Route::post('/cakes/add-to-cart/{id}', [CakesController::class, 'add'])->name('cakes.addToCart');
 
 Route::get('/snacks', [SnackController::class, 'index'])->name('snacks.index');
 Route::get('/snacks/create', [SnackController::class, 'create'])->name('snacks.create');
@@ -139,7 +132,6 @@ Route::put('/snacks/{snack}', [SnackController::class, 'update'])->name('snacks.
 Route::delete('/snacks/{snack}/soft-delete', [SnackController::class, 'softDelete'])->name('snacks.soft-delete');
 Route::delete('/snacks/{snack}', [SnackController::class, 'destroy'])->name('snacks.destroy');
 Route::get('/snacks/{snack}/order', [SnackController::class, 'order'])->name('snacks.order');
-
 
 Route::get('/birthday_packages', [BirthdayPackageController::class, 'index'])->name('birthday_packages.index');
 Route::get('/birthday_packages/create', [BirthdayPackageController::class, 'create'])->name('birthday_packages.create');
@@ -152,16 +144,5 @@ Route::delete('/birthday_packages/{birthday_package}/soft-delete', [BirthdayPack
 Route::get('/birthday-packages/add-book/{id}', [BirthdayPackageController::class, 'addBook'])->name('birthday_packages.add-book');
 Route::get('birthday-packages/{id}/book', [BirthdayPackageController::class, 'showBookingForm'])->name('birthday_packages.show_booking_form');
 
-
-
-Route::get('/bookings', [BookingController::class, 'index'])->name('bookings.index');
-Route::post('/birthday-packages/{packageId}/book', [BookingController::class, 'store'])->name('birthday_packages.book');
-Route::post('bookings', [BookingController::class, 'store'])->name('bookings.store');
-Route::post('/book-venue', [BookingController::class, 'bookVenue'])->name('book-venue');
-Route::get('/booking-confirmation', [BookingController::class, 'showConfirmation'])->name('bookings.confirmation');
-
-
-
-
 Route::get('/mpesa/stk/{transaction_id}', [CheckoutController::class, 'mpesaPin'])->name('mpesa.stk');
-Route::post('/get-token',[MpesaController::class, 'getAccessToken']);
+Route::post('/get-token', [MpesaController::class, 'getAccessToken']);

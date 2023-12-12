@@ -23,9 +23,6 @@
             <input type="text" name="phone" id="mpesaPhoneField" required>
         </div>
         
-        <!-- Add input for the amount -->
-        <label for="amount">Amount</label>
-        <input type="number" name="amount" id="amount" required>
         
         <button type="submit" class="button">Place Order</button>
     </form>

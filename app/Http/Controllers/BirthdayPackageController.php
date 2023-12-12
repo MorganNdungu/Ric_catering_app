@@ -80,7 +80,7 @@ class BirthdayPackageController extends Controller
             'name' => 'required|string|max:255',
             'description' => 'required|string',
             'price' => 'required|numeric',
-            'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048', // Update validation as needed
+            'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048', 
         ]);
 
         $package = BirthdayPackage::find($id);

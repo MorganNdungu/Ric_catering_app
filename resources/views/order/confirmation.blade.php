@@ -3,6 +3,11 @@
 @section('content')
     <link href="{{ asset('css/confirm.css') }}" rel="stylesheet" type="text/css">
 
+    @php
+     $user = Auth::user();
+     $userPhone = $user->phone ?? 'N/A'; 
+    @endphp
+    
     <div class="confirmation-container">
         <h1>Order Confirmation</h1>
         <p>Your order has been successfully placed.</p>

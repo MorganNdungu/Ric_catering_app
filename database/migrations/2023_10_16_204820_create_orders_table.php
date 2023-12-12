@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('address');
             $table->enum('payment', ['m-pesa', 'other_payment_methods']);
+            $table->decimal('total', 10, 2);
             $table->text('items');
             $table->timestamps();
             $table->softDeletes();

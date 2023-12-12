@@ -3,7 +3,7 @@
 @section('title', 'Edit Birthday Package')
 
 @section('content')
-    <h1>Edit Birthday Package</h1>
+    <h1>Venue & Package</h1>
 
     @if ($errors->any())
         <div class="alert alert-danger">

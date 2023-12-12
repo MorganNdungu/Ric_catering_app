@@ -4,7 +4,7 @@
 
 @section('content')
     <div class="container mt-5">
-        <h1>Create Birthday Package</h1>
+        <h1>Venue & Package</h1>
 
         @if ($errors->any())
             <div class="alert alert-danger">

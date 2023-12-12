@@ -53,6 +53,21 @@ public function showChangePasswordForm()
     return view('profile.change-password');
 }
 
+public function updatePhone(Request $request)
+{
+    $user = Auth::user();
+
+    $request->validate([
+        'phone' => 'nullable|string',
+    ]);
+
+    $user->update([
+        'phone' => $request->input('phone'),
+    ]);
+
+    return redirect()->route('profile.edit')->with('success', 'Phone number updated successfully.');
+}
+
 
     
 
@@ -67,7 +82,7 @@ public function showChangePasswordForm()
         $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|email|max:255',
-            // Add other validation rules for profile details
+            'phone' => 'nullable|string',
             'profile_pic' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
@@ -75,7 +90,7 @@ public function showChangePasswordForm()
         auth()->user()->update([
             'name' => $request->input('name'),
             'email' => $request->input('email'),
-            // Add other profile details
+            'phone' => $request->input('phone'),
         ]);
 
         // Handle profile picture upload
@@ -88,12 +103,16 @@ public function showChangePasswordForm()
         }
 
         return redirect()->route('profile.show')->with('success', 'Profile updated successfully!');
-        // You can create a Blade view file at resources/views/profile/show.blade.php to display the updated profile
     }
     public function showChangeEmailForm()
     {
         return view('profile.change-email');
     }
+    public function editPhoneForm()
+    {
+        return view('profile.edit-phone');
+    }
+
 
     public function changeEmail(Request $request)
     {
@@ -106,6 +125,7 @@ public function showChangePasswordForm()
                 'max:255',
                 Rule::unique('users')->ignore($user->id),
             ],
+            'phone' => 'nullable|string',
             'password' => 'required|string',
         ]);
 
@@ -113,8 +133,24 @@ public function showChangePasswordForm()
             return redirect()->back()->withErrors(['password' => 'The provided password is incorrect.'])->withInput();
         }
 
-        $user->update(['email' => $request->input('email')]);
+        $user->update(['email' => $request->input('email'),
+                        'phone' => $request->input('phone')
+    ]);
 
         return redirect()->route('profile.show')->with('success', 'Email changed successfully!');
     }
+
+    public function showOrders()
+    {
+        // Check if the user is authenticated
+        if (!Auth::check()) {
+            return redirect()->route('login');
+        }
+
+        // Retrieve orders associated with the authenticated user
+        $orders = Auth::user()->orders;
+
+        return view('profile.orders', compact('orders'));
+    }
+
 }

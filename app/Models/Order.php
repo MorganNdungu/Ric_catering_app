@@ -18,6 +18,7 @@ class Order extends Model
         'name',
         'address',
         'payment',
+        'total',
         'deleted_at',
     ];
 

@@ -1,4 +1,3 @@
-<!-- resources/views/bookings/index.blade.php -->
 
 @extends('layouts.app')
 
@@ -15,7 +14,6 @@
                     <!-- Display booking details -->
                     <h5 class="card-title">Full Name: {{ $booking->full_name }}</h5>
                     <p class="card-text">Phone Number: {{ $booking->phone_number }}</p>
-                    <!-- Add other booking details as needed -->
                 </div>
             </div>
         @endforeach
