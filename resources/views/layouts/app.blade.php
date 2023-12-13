@@ -13,6 +13,17 @@
         body{
             /* background-image:background-color:  */
         }
+        body.light-theme {
+        /* Light theme styles */
+        background-color: #fff;
+        color: black;
+        }
+
+        body.dark-theme {
+            /* Dark theme styles */
+            background-color: black;
+            color: #fff;
+        }
         .navbar-toggler-icon {
             background-color: red; 
         }
@@ -64,9 +75,12 @@
         .cart-username a {
             color: rgb(252, 252, 254); 
         }
+        body.dark-theme .cart-username a {
+            color: #000; 
+        }
     </style>
 </head>
-<body>
+<body class="light-theme">
 
     <div class="cart-username">
         <a href="{{ route('cart.view') }}"><i class="bi bi-cart3"></i>
@@ -83,6 +97,11 @@
             <a href="{{ route('profile.show') }}">Update Profile</a>
  
         </div>
+
+        <button onclick="toggleTheme()" class="btn btn-primary">
+            <i class="bi bi-sun"></i> 
+            <i class="bi bi-moon"></i> 
+        </button>
 
         @hasrole('Admin')
         <div>
@@ -200,7 +219,32 @@
         </div>
     </footer>
     
-
+    <script>
+        function toggleTheme() {
+            const bodyElement = document.body;
+            const isDarkTheme = bodyElement.classList.contains('dark-theme');
+    
+            // Toggle between dark and light themes by adding/removing the appropriate class
+            if (isDarkTheme) {
+                bodyElement.classList.remove('dark-theme');
+                bodyElement.classList.add('light-theme');
+            } else {
+                bodyElement.classList.remove('light-theme');
+                bodyElement.classList.add('dark-theme');
+            }
+    
+            // Save the user's preference in local storage
+            localStorage.setItem('theme', isDarkTheme ? 'light' : 'dark');
+        }
+    
+        // Apply the user's preferred theme on page load
+        const preferredTheme = localStorage.getItem('theme') || 'light';
+        const bodyElement = document.body;
+        
+        // Add the appropriate class based on the user's preferred theme
+        bodyElement.classList.add(preferredTheme + '-theme');
+    </script>
+    
     {{-- <script src="{{ asset('js/app.js') }}"></script> --}}
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"

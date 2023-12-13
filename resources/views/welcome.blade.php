@@ -43,6 +43,10 @@
         <div class="row mt-5">
             @php
                 $categoryImages = [
+                    'images/Taekook one shots.jpg',
+                    'images/Soft.jpg',
+                    'images/15th Birthday Party.jpg',
+                    'images/10 Party & Wedding Table Ideas That Totally Transformed These Events - PartySlate.jpg',
                     'images/Chicken and Cauliflower Rice.jpeg',
                     'images/Paneer Tikka Recipe.jpeg',
                     'images/Rice with Chicken a Nigerian Recipe.jpeg',

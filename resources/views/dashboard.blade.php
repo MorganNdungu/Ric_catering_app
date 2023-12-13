@@ -29,15 +29,12 @@
                             @endif                            
                         </div>
 
-                        {{-- Add more sections based on your application's features --}}
                         <div class="mt-4">
                             <h4>Your Profile</h4>
-                            {{-- Display user profile information --}}
                             <p>Name: {{ Auth::user()->name }}</p>
                             <p>Email: {{ Auth::user()->email }}</p>
                         </div>
 
-                        {{-- Add more sections as needed --}}
                     </div>
                 </div>
             </div>
